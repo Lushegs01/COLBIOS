@@ -33,12 +33,14 @@ const methodMeta = {
   },
 } as const;
 
-const cardVariants = {
+import { Variants } from "framer-motion";
+
+const cardVariants: Variants = {
   hidden: { opacity: 0, x: 28 },
   show: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] },
+    transition: { duration: 0.55, delay: 0.1 + i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] as const },
   }),
 };
 

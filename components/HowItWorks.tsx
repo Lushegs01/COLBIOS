@@ -6,7 +6,9 @@ import { howItWorksSteps } from "@/lib/site";
 
 const stepIcons = [ClipboardList, CreditCard, BadgeCheck];
 
-const cardVariants = {
+import { Variants } from "framer-motion";
+
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: (i: number) => ({
     opacity: 1,
@@ -14,7 +16,7 @@ const cardVariants = {
     transition: {
       duration: 0.6,
       delay: i * 0.12,
-      ease: [0.21, 0.47, 0.32, 0.98],
+      ease: [0.21, 0.47, 0.32, 0.98] as const,
     },
   }),
 };

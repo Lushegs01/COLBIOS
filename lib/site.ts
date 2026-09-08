@@ -1,22 +1,21 @@
 /**
- * Central site configuration.
- * Every value that a maintainer might need to change lives here —
- * update once and it propagates across the whole landing page.
+ * Landing-page copy and brand constants.
+ *
+ * Note what is deliberately *not* here any more: the dues amount and the
+ * academic session. Those are configuration, they live in the database, and the
+ * landing page reads them through lib/landing.ts — so the marketing page can
+ * never quote a figure that checkout would not charge.
  */
 export const siteConfig = {
   brandName: "COLBIOS",
   institution: "College of Biosciences",
   university: "Federal University of Agriculture, Abeokuta",
-  session: "2026/2027",
-  duesAmount: 5_000,
-  paymentUrl: "https://your-payment-platform.com",
+  /** Fallback only, for the rare render where no session is configured yet. */
+  session: "the current",
+  /** The payment application lives at /pay in this same deployment. */
+  paymentUrl: "/pay",
   supportEmail: "support@example.com",
 } as const;
-
-/** Format an amount as Naira, e.g. 5000 -> "₦5,000" */
-export function formatNaira(amount: number): string {
-  return `₦${amount.toLocaleString("en-NG")}`;
-}
 
 /** Payment methods shown across the page. Keep in sync with what the
  *  actual payment platform supports before going live. */
@@ -63,12 +62,17 @@ export const faqs = [
   {
     question: "Who can use COLBIOS Dues?",
     answer:
-      "Students of the College of Biosciences, Federal University of Agriculture, Abeokuta, who need to pay their college dues for the 2026/2027 academic session.",
+      "Students of the College of Biosciences, Federal University of Agriculture, Abeokuta, who need to pay their college dues for the current academic session.",
   },
   {
     question: "How do I pay my dues?",
     answer:
-      "Tap “Pay dues now”, enter your matric number to verify your details, choose a payment method, and complete your payment. You’ll see a confirmation as soon as it goes through.",
+      "Tap “Pay dues now”, enter your name, matric number, department and level, review the exact amount for your level, then pay with Paystack. You’ll see a confirmation as soon as the payment is verified.",
+  },
+  {
+    question: "How much are my dues?",
+    answer:
+      "Dues are set by the College of Biosciences and depend on your level. Enter your details on the payment page and the exact amount for your level is shown before you pay anything.",
   },
   {
     question: "What payment methods are available?",
@@ -83,7 +87,7 @@ export const faqs = [
   {
     question: "Can I get a receipt?",
     answer:
-      "Yes. A digital receipt is generated for every successful payment, which you can view and keep for your records.",
+      "Yes. A receipt is issued for every verified payment. You can view it online, print it, or download it as a PDF, and anyone can scan the QR code on it to confirm the payment is genuine.",
   },
   {
     question: "What should I do if I paid but my status has not updated?",

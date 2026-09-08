@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { BadgeCheck, Check, FileText, UserCheck, Wallet } from "lucide-react";
-import { formatNaira, siteConfig } from "@/lib/site";
 import FloatingCard from "./FloatingCard";
 import PayDuesButton from "./PayDuesButton";
 import PhoneMockup from "./PhoneMockup";
@@ -37,7 +36,13 @@ const STUDENT_AVATARS = [
   },
 ];
 
-export default function Hero() {
+type HeroProps = {
+  /** Live configuration — the landing page never states an amount of its own. */
+  sessionName: string | null;
+  amountLabel: string | null;
+};
+
+export default function Hero({ sessionName, amountLabel }: HeroProps) {
   return (
     <section id="top" className="relative overflow-x-clip pb-24 pt-32 sm:pt-44">
       {/* ── Background layer ── */}
@@ -95,7 +100,7 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pine-400 opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-pine-500" />
               </span>
-              {siteConfig.session} dues are now open
+              {sessionName ? `${sessionName} dues are now open` : "Dues payment opens soon"}
             </span>
           </motion.div>
 
@@ -203,7 +208,7 @@ export default function Hero() {
             }}
             className="relative z-10 flex justify-center"
           >
-            <PhoneMockup />
+            <PhoneMockup sessionName={sessionName} amountLabel={amountLabel} />
           </motion.div>
 
           {/* Card 1 — Payment methods */}
@@ -251,7 +256,7 @@ export default function Hero() {
                   Payment confirmed
                 </p>
                 <p className="mt-1 text-[11px] text-muted">
-                  COLBIOS dues · {formatNaira(siteConfig.duesAmount)}
+                  COLBIOS dues{amountLabel ? ` · ${amountLabel}` : ""}
                 </p>
                 <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-pine-50 px-2 py-0.5 text-[10px] font-semibold text-pine-700 ring-1 ring-pine-200/60">
                   <Check size={10} strokeWidth={3} />

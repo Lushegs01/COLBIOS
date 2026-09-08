@@ -9,8 +9,21 @@ import PaymentMethods from "@/components/PaymentMethods";
 import PaymentPreview from "@/components/PaymentPreview";
 import SecuritySection from "@/components/SecuritySection";
 import TrustStrip from "@/components/TrustStrip";
+import { getLandingConfig } from "@/lib/landing";
 
-export default function Home() {
+/**
+ * The public landing page.
+ *
+ * It reads the same live configuration the payment flow uses, so it can never
+ * advertise a session or an amount that checkout would not honour. Revalidated
+ * every five minutes: configuration changes rarely, and students on slow
+ * connections should get a cached page.
+ */
+export const revalidate = 300;
+
+export default async function Home() {
+  const config = await getLandingConfig();
+
   return (
     <MotionProvider>
       <a
@@ -21,14 +34,14 @@ export default function Home() {
       </a>
       <Navbar />
       <main id="main">
-        <Hero />
+        <Hero sessionName={config.sessionName} amountLabel={config.amountLabel} />
         <TrustStrip />
         <HowItWorks />
-        <PaymentPreview />
+        <PaymentPreview sessionName={config.sessionName} amountLabel={config.amountLabel} />
         <PaymentMethods />
         <SecuritySection />
         <FAQ />
-        <FinalCTA />
+        <FinalCTA sessionName={config.sessionName} />
       </main>
       <Footer />
     </MotionProvider>

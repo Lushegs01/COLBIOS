@@ -5,13 +5,21 @@ import {
   Signal,
   Wifi,
 } from "lucide-react";
-import { formatNaira, paymentMethods, siteConfig } from "@/lib/site";
+import { paymentMethods, siteConfig } from "@/lib/site";
 
 /**
  * A realistic smartphone built entirely with HTML/CSS so it stays crisp
  * at every resolution. Purely decorative — hidden from assistive tech.
  */
-export default function PhoneMockup({ className = "" }: { className?: string }) {
+export default function PhoneMockup({
+  className = "",
+  sessionName,
+  amountLabel,
+}: {
+  className?: string;
+  sessionName: string | null;
+  amountLabel: string | null;
+}) {
   return (
     <div
       aria-hidden="true"
@@ -48,7 +56,7 @@ export default function PhoneMockup({ className = "" }: { className?: string }) 
                   COLBIOS<span className="text-pine-600">.</span>
                 </p>
                 <p className="mt-0.5 text-[11px] text-muted">
-                  {siteConfig.session} Session
+                  {sessionName ?? siteConfig.session} Session
                 </p>
               </div>
               <div className="grid h-9 w-9 place-items-center rounded-full bg-white text-pine-700 ring-1 ring-line">
@@ -68,10 +76,10 @@ export default function PhoneMockup({ className = "" }: { className?: string }) 
               </div>
               <p className="mt-4 text-[11px] text-muted">Amount due</p>
               <p className="mt-1 text-[30px] font-semibold tracking-tight text-ink">
-                {formatNaira(siteConfig.duesAmount)}
+                {amountLabel ?? "Set by level"}
               </p>
               <div className="mt-4 flex h-11 items-center justify-center rounded-full bg-pine-700 text-[13px] font-medium text-white">
-                Pay {formatNaira(siteConfig.duesAmount)}
+                {amountLabel ? `Pay ${amountLabel.replace("from ", "")}` : "Pay dues"}
               </div>
             </div>
 
@@ -105,7 +113,7 @@ export default function PhoneMockup({ className = "" }: { className?: string }) 
                     COLBIOS dues
                   </p>
                   <p className="mt-0.5 text-[11px] text-muted">
-                    {formatNaira(siteConfig.duesAmount)}
+                    {amountLabel?.replace("from ", "") ?? "Paid in full"}
                   </p>
                 </div>
                 <span className="flex items-center gap-1 rounded-full bg-pine-50 px-2.5 py-1 text-[10px] font-medium text-pine-700">

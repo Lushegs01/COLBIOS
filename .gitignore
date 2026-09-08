@@ -34,3 +34,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# env files (never commit real credentials)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# prisma generated client
+/lib/generated
+/prisma/generated
+
+# test artifacts
+/test-results

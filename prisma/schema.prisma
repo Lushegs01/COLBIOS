@@ -1,0 +1,271 @@
+// COLBIOS Dues Payment Platform — database schema.
+//
+// Design notes that matter for correctness:
+//  * Money is NEVER a float. Every amount is an integer in the currency's minor
+//    unit (kobo for NGN), which is exactly what Paystack expects on the wire.
+//  * Payments keep a snapshot of the fee/session/department they were made
+//    against, so a historical receipt stays correct after configuration changes.
+//  * Several invariants are enforced with PostgreSQL partial unique indexes that
+//    Prisma cannot express in this file. They live in the migration SQL:
+//      - at most one active AcademicSession
+//      - at most one active Fee per (session, level, code)
+//      - at most one SUCCESS Payment per (matric, session, fee)
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+  runtime  = "nodejs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Academic levels the platform can charge dues for. The levels a student can
+/// actually pick are derived from the *active fee configuration*, never from this
+/// list — adding a new level is a one-line migration.
+enum Level {
+  L100
+  L200
+  L300
+  L400
+  L500
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  ABANDONED
+  REVERSED
+  REFUNDED
+}
+
+/// Where a payment event came from. Paystack webhooks are authoritative;
+/// VERIFY rows are produced by our own server-side verification calls.
+enum PaymentEventSource {
+  WEBHOOK
+  VERIFY
+  SYSTEM
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  ADMIN
+  FINANCE
+}
+
+model AcademicSession {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  active    Boolean   @default(false)
+  startsAt  DateTime?
+  endsAt    DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  fees     Fee[]
+  payments Payment[]
+
+  @@index([active])
+}
+
+model Fee {
+  id        String   @id @default(cuid())
+  sessionId String
+  level     Level
+  /// Machine-readable fee type, e.g. "COLBIOS_DUES". Part of the active-fee
+  /// uniqueness key so a session can later carry more than one fee type.
+  code      String   @default("COLBIOS_DUES")
+  name      String
+  /// Amount in the currency's minor unit (kobo for NGN). Never a float.
+  amount    Int
+  currency  String   @default("NGN")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  session  AcademicSession @relation(fields: [sessionId], references: [id], onDelete: Restrict)
+  payments Payment[]
+
+  @@index([sessionId])
+  @@index([level])
+  @@index([active])
+  @@index([sessionId, level, active])
+}
+
+model Department {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  code      String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  payments Payment[]
+
+  @@index([active])
+}
+
+model Payment {
+  id String @id @default(cuid())
+
+  /// Server-generated, globally unique, e.g. COLBIOS-2026-7F3KQ9AB.
+  reference String @unique
+
+  // --- Student-submitted identity, stored exactly as submitted -------------
+  fullName      String
+  matricNumber  String
+  /// Uppercased/whitespace-stripped form used for matching and for the
+  /// duplicate-payment constraint. The submitted value above is never mutated.
+  matricNormal  String
+  email         String
+
+  // --- Configuration snapshot at the time of payment ----------------------
+  departmentId   String
+  departmentName String
+  level          Level
+  sessionId      String
+  sessionName    String
+  feeId          String
+  feeName        String
+  /// Snapshot of the fee amount, in minor units. This is the authoritative
+  /// expected amount that Paystack's reported amount is checked against.
+  amount         Int
+  currency       String @default("NGN")
+
+  status PaymentStatus @default(PENDING)
+
+  // --- Provider data ------------------------------------------------------
+  paystackTransactionId String?   @unique
+  authorizationUrl      String?
+  accessCode            String?
+  channel               String?
+  paidAt                DateTime?
+  failureReason         String?
+
+  // --- Manual (non-Paystack) adjustment, clearly distinguishable ----------
+  /// Set exactly once, by whichever fulfilment path wins the claim, so the
+  /// student never receives two confirmation emails for one payment.
+  confirmationEmailSentAt DateTime?
+
+  isManualAdjustment Boolean   @default(false)
+  manualReason       String?
+  manualAdjustedById String?
+  manualAdjustedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  department       Department      @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+  session          AcademicSession @relation(fields: [sessionId], references: [id], onDelete: Restrict)
+  fee              Fee             @relation(fields: [feeId], references: [id], onDelete: Restrict)
+  manualAdjustedBy AdminUser?      @relation(fields: [manualAdjustedById], references: [id], onDelete: SetNull)
+  receipt          Receipt?
+  events           PaymentEvent[]
+
+  @@index([matricNormal])
+  @@index([status])
+  @@index([sessionId])
+  @@index([feeId])
+  @@index([departmentId])
+  @@index([createdAt])
+  @@index([sessionId, status])
+  @@index([matricNormal, sessionId])
+  @@index([status, createdAt])
+}
+
+model PaymentEvent {
+  id String @id @default(cuid())
+
+  /// Stable per-event identity used for webhook idempotency, e.g.
+  /// "charge.success:1234567890". A duplicate delivery collides here.
+  providerEventId String             @unique
+  source          PaymentEventSource @default(WEBHOOK)
+  eventType       String
+  reference       String
+  paymentId       String?
+  payload         Json
+  processed       Boolean            @default(false)
+  processedAt     DateTime?
+  error           String?
+  createdAt       DateTime           @default(now())
+
+  payment Payment? @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([reference])
+  @@index([paymentId])
+  @@index([processed])
+  @@index([createdAt])
+}
+
+model Receipt {
+  id            String   @id @default(cuid())
+  paymentId     String   @unique
+  receiptNumber String   @unique
+  issuedAt      DateTime @default(now())
+
+  payment Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+}
+
+model AdminUser {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  name              String
+  passwordHash      String
+  role              AdminRole @default(FINANCE)
+  active            Boolean   @default(true)
+  lastLoginAt       DateTime?
+  passwordChangedAt DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  auditLogs         AuditLog[]
+  adjustedPayments  Payment[]
+
+  @@index([active])
+}
+
+model AuditLog {
+  id String @id @default(cuid())
+
+  adminId    String?
+  /// Snapshot so the trail survives an admin record being removed.
+  adminEmail String?
+  action     String
+  entityType String
+  entityId   String?
+  /// Never contains passwords, tokens or provider secrets.
+  metadata   Json?
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  admin AdminUser? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+
+  @@index([adminId])
+  @@index([action])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+/// Atomic counters (receipt numbering). Incremented inside the same
+/// transaction that issues a receipt so numbers are gapless and unique.
+model Counter {
+  key       String   @id
+  value     Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+/// Durable fixed-window rate limiting. Lives in Postgres rather than process
+/// memory so the limits still hold across serverless instances.
+model RateLimitBucket {
+  /// "<bucket>:<identifier>:<window start epoch ms>"
+  id        String   @id
+  bucket    String
+  count     Int      @default(0)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+  @@index([bucket])
+}

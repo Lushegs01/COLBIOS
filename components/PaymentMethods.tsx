@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CreditCard, Landmark, Smartphone, ArrowRight, ShieldCheck, Zap, Check } from "lucide-react";
-import { paymentMethods, siteConfig } from "@/lib/site";
+import { CreditCard, Landmark, Smartphone, ArrowRight, Zap, Check } from "lucide-react";
+import { paymentMethods } from "@/lib/site";
 import PayDuesButton from "./PayDuesButton";
 
 const iconById = {

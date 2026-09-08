@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/site";
 import PayDuesButton from "./PayDuesButton";
 import Reveal from "./Reveal";
 
-export default function FinalCTA() {
+export default function FinalCTA({ sessionName }: { sessionName: string | null }) {
   return (
     <section className="px-4 pb-24 sm:px-6 sm:pb-32">
       <Reveal className="mx-auto max-w-6xl">
@@ -14,7 +14,7 @@ export default function FinalCTA() {
           />
           <div className="relative">
             <p className="text-sm font-medium text-pine-200">
-              {siteConfig.session} session
+              {sessionName ?? siteConfig.session} session
             </p>
             <h2 className="mt-3 text-balance text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">
               Ready to get cleared?

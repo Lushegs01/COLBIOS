@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { formatNaira, paymentMethods, siteConfig } from "@/lib/site";
+import { paymentMethods, siteConfig } from "@/lib/site";
 import PayDuesButton from "./PayDuesButton";
 import Reveal from "./Reveal";
 
@@ -9,7 +9,9 @@ const bullets = [
   "Choose how you want to pay at checkout",
 ];
 
-export default function PaymentPreview() {
+type PreviewProps = { sessionName: string | null; amountLabel: string | null };
+
+export default function PaymentPreview({ sessionName, amountLabel }: PreviewProps) {
   return (
     <section
       id="payment"
@@ -64,12 +66,12 @@ export default function PaymentPreview() {
               </div>
               <div className="flex items-center justify-between gap-6 py-3.5">
                 <dt className="text-muted">Academic Session</dt>
-                <dd className="font-medium text-ink">{siteConfig.session}</dd>
+                <dd className="font-medium text-ink">{sessionName ?? siteConfig.session}</dd>
               </div>
               <div className="flex items-center justify-between gap-6 py-3.5">
                 <dt className="text-muted">Amount</dt>
                 <dd className="text-2xl font-semibold tracking-tight text-ink">
-                  {formatNaira(siteConfig.duesAmount)}
+                  {amountLabel ?? "Set by level"}
                 </dd>
               </div>
             </dl>

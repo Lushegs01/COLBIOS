@@ -1,179 +1,195 @@
-# Meridian — payment platform landing page
+# COLBIOS — FUNAAB student payments landing page
 
-A production-ready marketing page for a fictional global payments platform.
-Static HTML, CSS and JavaScript. No build step, no framework, no runtime
-dependencies — open `index.html` and it runs.
+The public page students see **before** entering the COLBIOS payment platform.
+Static HTML, CSS and JavaScript — no build step, no framework, no runtime
+dependencies.
 
-![The hero: a dot-globe with live payment routes, over the headline "Move money like it's software."](assets/img/og-image.png)
+![The COLBIOS hero: "Your COLBIOS dues, made simple." with a preview of the payment platform](assets/img/og-image.png)
 
 ---
 
-## Run it
+## What this is, and what it is not
+
+| This website | The COLBIOS payment platform |
+|---|---|
+| Explains what COLBIOS is | Student identification |
+| Shows how paying works | Payment processing |
+| Answers common questions | Transaction confirmation |
+| Sends students to the platform | Receipts |
+
+**No payment information is collected here.** There is no `<form>`, no `<input>`
+and no field of any kind in this page — matriculation numbers, card details,
+bank details and amounts all belong to the separate platform. Every `Pay Now`
+button is a link that hands the student off.
+
+---
+
+## Configure it before you deploy
+
+Everything you need to change lives in **one file**: `assets/js/config.js`.
+
+```js
+window.__COLBIOS_CONFIG__ = {
+  PAYMENT_PLATFORM_URL: '',        // REQUIRED — where Pay Now sends students
+  OPEN_IN_NEW_TAB: false,
+  REDIRECT_DELAY_MS: 650,
+  INSTITUTION_NAME: 'Federal University of Agriculture, Abeokuta',
+  INSTITUTION_SHORT: 'FUNAAB',
+  INSTITUTION_RELATIONSHIP: '',    // see "Institutional wording" below
+  SUPPORT_EMAIL: '', SUPPORT_PHONE: '', SUPPORT_HOURS: '',
+  PRIVACY_URL: '', TERMS_URL: '',
+  SITE_URL: ''
+};
+```
+
+`PAYMENT_PLATFORM_URL` is the **only** place the payment destination is written.
+All six Pay Now buttons — header, hero, the platform preview card, the mid-page
+band, the closing band and the footer — read from it. Nothing is hardcoded.
+
+**Until it is set**, Pay Now does not fail silently: it stays focusable, appears
+muted rather than gold, and pressing it explains that no destination has been
+configured. That is deliberate, so an unconfigured deploy is obvious instead of
+looking broken to a student.
+
+Only `http:` and `https:` URLs are accepted. A malformed or unsafe value is
+rejected rather than becoming a live link.
+
+### Also replace before launch
+
+`https://colbios.example.com/` appears in the canonical, `og:url` and
+`og:image` tags in `index.html`. `example.com` is the reserved documentation
+domain, so it is obviously a placeholder — swap it for your real domain.
+Setting `SITE_URL` in the config also updates canonical and `og:url` at
+runtime, but crawlers that do not run JavaScript read the markup, so change
+both.
+
+### Institutional wording
+
+`INSTITUTION_RELATIONSHIP` is **empty by default and should stay empty** unless
+the relationship between COLBIOS and the university is established and you are
+authorised to state it. The page never claims to be owned, endorsed, accredited
+or operated by FUNAAB. Whatever you put in that field is printed verbatim in
+the footer.
+
+### Support details
+
+`SUPPORT_EMAIL`, `SUPPORT_PHONE` and `SUPPORT_HOURS` are empty by default. When
+they are empty the footer and the FAQ tell students to use the support channel
+on the payment platform, rather than showing a contact that does not exist. Set
+them and they appear in both places automatically.
+
+`PRIVACY_URL` and `TERMS_URL` work the same way: unset, the footer renders those
+labels as plain non-focusable text rather than as links to pages that are not
+there.
+
+---
+
+## Run and deploy
 
 ```bash
 python3 -m http.server 8000     # or: npx serve .
 ```
 
-Then open <http://localhost:8000>. Because there is no build step you can also
-drag `index.html` into a browser, though the self-hosted fonts need a server to
-load with the right MIME type.
-
-**Deploying:** upload the folder as-is. Netlify (drag-and-drop), Vercel
-(`vercel --prod`), GitHub Pages, Cloudflare Pages and S3 all work with zero
-configuration. Before going live, replace `https://meridian.example.com/` in the
-canonical, `og:url` and `og:image` tags in `index.html` with your real domain —
-Open Graph images must be absolute URLs.
+Upload the folder as-is. Netlify, Vercel, GitHub Pages, Cloudflare Pages and S3
+all work with no configuration. The only build-time decision is editing
+`config.js`.
 
 ---
 
 ## The design
 
-### The idea
-
-A meridian is the line where local noon falls. Money crosses those lines
-constantly, which is the actual product story, so **the page runs a 24-hour
-cycle**: night at the hero, a sunrise band, a daylight zone for product and
-pricing, a sunset band, then night again for the closing call to action. The
-section transitions are that horizon, rather than a decorative divider bolted
-between blocks.
-
-Two supporting motifs carry it: a **ledger** (hairline rules, tabular numerals,
-figures that line up) and the **terminator** — the day/night line — which shows
-up in the logo mark, the globe's lit limb, and the two horizon bands.
-
-### Palette
-
-Semantic, not decorative. Colour carries meaning rather than filling space.
+**Institutional, not fintech-generic.** Deep forest green carries the structure
+— header mark, the two call-to-action bands, the footer, the preview card's
+header. A single gold accent (`#D2991F`) is reserved almost entirely for one
+thing: the Pay Now button. Because nothing else on the page is gold, the eye
+lands on the action every time.
 
 | Token | Value | Role |
 |---|---|---|
-| `--night` | `#061A22` | Night zones. A deep teal-navy — a real colour, not a tinted black |
-| `--paper` | `#F0F2F1` | Day zone. Cool pale grey-green, deliberately not a warm cream |
-| `--ivory` / `--ink` | `#F2F0EA` / `#0A1E26` | Text on night / on day |
-| `--gold` | `#F5B942` | The one brand accent. Means *value* — CTAs, figures, the sun |
-| `--mint` | `#35D6A8` | State only: settled, approved, paid out |
-| `--rose` | `#FF6B7A` | State only: blocked, declined, risk |
+| `--green-900` | `#0B3A2A` | CTA bands, footer, preview header |
+| `--green-600` | `#1B6B48` | Confirmation states, icons |
+| `--green-50` | `#EDF3EE` | Alternating section tint |
+| `--paper` | `#F7F9F7` | Page background |
+| `--ink` | `#14231C` | Body text |
+| `--accent` | `#D2991F` | Pay Now, step markers, the mark's check |
 
-Deep variants (`--gold-deep`, `--mint-deep`, `--rose-deep`) exist because the
-bright values don't carry enough contrast as text on the light zone.
+Type is **Schibsted Grotesk** throughout (one variable file, 400–900), with
+**IBM Plex Mono** used only for the reference-number style figure in the preview
+card. Status is never communicated by colour alone — "Verified", "This is where
+you pay" and "No payment details are entered here" all carry an icon and words.
 
-### Typography
-
-One family, one job each. **Schibsted Grotesk** (variable, 400–900) does
-everything — 800 with `-0.045em` tracking for display, 400 for body.
-**IBM Plex Mono** is reserved strictly for figures and code, because a ledger
-needs tabular numerals that align in a column. It is never used for labels or
-decoration.
-
-### Layout
-
-Left-aligned throughout, on a single spine, with the pricing section centred as
-a deliberate break. The feature grid is an asymmetric bento — a 7-column tile
-with a routes visualisation, a 5-column risk feed, three 4-column tiles and a
-full-width code tile — so the tiles differ in shape and treatment rather than
-being one card repeated six times. Pricing is a **single slab divided by
-hairlines**, with the featured tier lifting out of it and inverting to the
-product's own dark surface.
+**The hero visual** is a still preview of the payment platform, captioned so
+students know what they are looking at. It is wrapped in the same Pay Now link,
+so pressing the "Continue" button it shows does what it appears to do rather
+than nothing.
 
 ---
 
-## Motion
+## Content policy
 
-Deliberately **no animation library.** GSAP plus ScrollTrigger would have added
-~70 KB and a third-party request for effects this page achieves with CSS
-transitions and one `requestAnimationFrame` loop. What's here:
+Nothing on this page is invented. There are no customer logos, no testimonials,
+no transaction volumes, no student counts, no uptime figures, no live counters
+and no security certifications. The only numbers in the visible text are the
+step markers `01`–`03` and the copyright year. The reference number in the
+preview card is masked (`COLBIOS-XXXX-XXXX`) so it reads as a template rather
+than a real transaction.
 
-- **Page load** — one orchestrated hero sequence, staggered 90 ms per element.
-  It is the only non-interactive entrance on the page.
-- **Scroll reveals** — `IntersectionObserver` adds a class; CSS does the rest.
-  Siblings in a grid stagger so a row arrives as a group.
-- **One scroll loop** — nav state, the light/dark nav inversion, the section
-  rail, the step thread and the console tilt are all computed in a single
-  rAF-throttled handler. Layout reads (`offsetHeight`, `scrollHeight`) are
-  cached and only recomputed on resize, so scrolling never forces reflow.
-- **The globe** — an orthographic dot-sphere on `<canvas>`: 900 points on a
-  Fibonacci sphere, lit from the upper right so the day side is gold and the
-  night side cool. Routes fly along real great circles between real city
-  coordinates. Dots are batched into alpha buckets, so a frame costs about ten
-  canvas state changes. It pauses when off screen and when the tab is hidden.
-- **Everything animated is `transform` or `opacity`,** which keeps it on the
-  compositor at 60 fps.
-
-`prefers-reduced-motion: reduce` disables all of it — the marquees, the globe
-loop, the parallax and the console tilt — and renders one static globe frame.
+If you add content, keep to this: describe what COLBIOS does, not how many
+people use it.
 
 ---
 
-## Performance, accessibility, SEO
+## Performance and accessibility
 
-- **~180 KB total**, roughly 55 KB over the wire gzipped. No third-party
-  requests at runtime.
-- **Fonts are self-hosted** (`assets/fonts/`) with `font-display: swap` and the
-  two critical latin faces preloaded. This removes two DNS lookups and TLS
-  handshakes from the critical path versus loading from Google Fonts.
-- **Works without JavaScript.** Reveal animations are scoped to a `.js` class
-  that only exists when a script runs, and counters ship their real values in
-  the markup, so a no-JS visitor gets the full page with correct figures.
-- Semantic landmarks, a skip link, visible focus rings, `aria-expanded` on the
-  accordion and menu, a proper tablist with arrow-key navigation and roving
-  `tabindex`, `hidden` correctly removing collapsed panels from the
-  accessibility tree, and labelled decorative SVGs.
-- Meta description, canonical, Open Graph and Twitter cards, and
-  `SoftwareApplication` JSON-LD.
+- **~120 KB total**, around 45 KB over the wire gzipped. Zero third-party
+  requests — fonts are self-hosted (82 KB across three files, only the two
+  latin faces preloaded).
+- **No continuously running animation.** Motion is limited to one-time entrance
+  reveals and hover/press feedback. The redirect's progress bar plays once. This
+  is verified by a test that fails if any CSS rule declares an infinite
+  animation.
+- **Works without JavaScript**: reveals are scoped to a `.js` class that only
+  exists when a script runs, so a scriptless visitor gets the whole page.
+- Skip link, semantic landmarks, visible focus rings, `aria-expanded` on the
+  accordion and mobile menu, collapsed FAQ panels removed from the
+  accessibility tree, 54px primary tap targets, and `prefers-reduced-motion`
+  respected.
+- Mobile-first ordering: header → headline → explanation → **Pay Now** → trust
+  indicators → how it works. The primary action is never below a decorative
+  block, and the header Pay Now stays visible rather than hiding behind the
+  hamburger.
+
+Verified in headless Chromium by 33 automated checks covering both the
+configured and unconfigured redirect paths, the interstitial, FAQ semantics,
+keyboard order, mobile layout, reduced motion, the no-JS path, and no
+horizontal overflow from 320 px to 1920 px.
 
 ---
 
 ## Files
 
 ```
-index.html              Everything: markup, inline SVG, structured data
-assets/css/styles.css   Tokens, then components in page order
-assets/css/fonts.css    @font-face declarations
-assets/js/main.js       Reveals, nav, scroll loop, globe, dashboard, forms
-assets/fonts/           Self-hosted woff2 (latin + latin-ext)
-assets/img/favicon.svg  The meridian mark
-assets/img/og-image.png Social card, 1200×630
+index.html               All markup, inline SVG and structured data
+assets/js/config.js      >>> the only file you need to edit to deploy <<<
+assets/js/main.js        Redirect handoff, header, reveals, FAQ
+assets/css/styles.css    Tokens, then components in page order
+assets/css/fonts.css     @font-face declarations
+assets/fonts/            Self-hosted woff2
+assets/img/favicon.svg   The COLBIOS shield mark
+assets/img/og-image.png  Social card, 1200×630
 ```
 
-`styles.css` is ordered top to bottom in the same order the page renders, so the
-CSS for a section is where you'd expect to find it.
-
 ---
 
-## Customising it
+## Editing content
 
-**Colours** — every value lives in `:root` at the top of `styles.css`. Changing
-`--gold` re-themes every CTA, figure and accent in one edit. If you swap the
-accent for something cool, also update the three canvas colours in `main.js`
-(search for `#FFC65C`, `#7FC6DC` and the `rgba(245, 185, 66, …)` strokes), and
-the `stop-color` values in the two horizon gradients in `index.html`.
+All copy is plain text in `index.html` — there is no templating. The FAQ is a
+list of `.faq__item` blocks; to add one, copy a block and give the button and
+panel a new matching `id`/`aria-controls` pair, then add the same question and
+answer to the `FAQPage` JSON-LD in `<head>` so the structured data stays true to
+the page.
 
-**Copy** — all text is in `index.html` with no templating. The dashboard's
-numbers, chart series, axis labels and table rows live in the `VIEWS` object in
-`main.js`, one entry per tab.
-
-**Type** — replace the `@font-face` blocks in `fonts.css` and the `--ff` /
-`--ff-mono` tokens. Keep a monospace with tabular numerals for the figures, or
-column alignment in the ledger and KPI row will drift.
-
-**Sections** — each is a self-contained `<section>`. To remove one, delete it
-and its entry in the `.rail` list at the top of `index.html`. To reorder, move
-the markup; the scroll logic reads positions from the DOM, so nothing else needs
-touching. Note the `zone-night` / `zone-day` class decides which side of the
-day/night cycle a section sits on — if you move one across a horizon band,
-change its zone class to match.
-
-**Pricing** — amounts are `data-monthly` and `data-annual` attributes on the
-`[data-price]` spans; the toggle tweens between them.
-
-**Logos** — the six customer marks are inline SVG in the trust marquee. Swap the
-`<svg>` and label; the marquee duplicates its own content in JS, so the loop
-stays seamless whatever you put in it.
-
----
-
-## Note
-
-Meridian is a fictional brand created for this design. The company names,
-customer quotes, figures and metrics are illustrative and are labelled as such
-in the page footer.
+Elements marked `data-institution-short`, `data-institution-name`,
+`data-institution-relationship`, `data-support-block` and `data-support-answer`
+are filled from the config at runtime; edit the config rather than the markup
+for those.

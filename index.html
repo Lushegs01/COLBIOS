@@ -3,785 +3,531 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Meridian — Move money like it's software</title>
-<meta name="description" content="Meridian is the payments platform behind modern businesses. Accept payments in 135 currencies, run subscriptions that survive failed cards, and watch every cent settle in real time.">
-<meta name="theme-color" content="#061A22">
-<link rel="canonical" href="https://meridian.example.com/">
+<title>COLBIOS — FUNAAB Student Payment Portal</title>
+<meta name="description" content="COLBIOS is a digital payment platform for FUNAAB student dues. Find out what COLBIOS is, how paying works, and continue to the secure COLBIOS payment platform to complete your payment.">
+<meta name="theme-color" content="#0B3A2A">
+<!-- Replace with your real domain before launch (see README). -->
+<link rel="canonical" href="https://colbios.example.com/">
 
-<!-- Open Graph / social -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Meridian">
-<meta property="og:title" content="Meridian — Move money like it's software">
-<meta property="og:description" content="One integration, 190 countries. Accept payments, run subscriptions, and see every cent settle in real time.">
-<meta property="og:url" content="https://meridian.example.com/">
-<meta property="og:image" content="https://meridian.example.com/assets/img/og-image.png">
+<meta property="og:site_name" content="COLBIOS">
+<meta property="og:title" content="COLBIOS — FUNAAB Student Payment Portal">
+<meta property="og:description" content="Pay your COLBIOS dues securely. A simple, secure and convenient way for FUNAAB students to complete their required payments.">
+<meta property="og:url" content="https://colbios.example.com/">
+<meta property="og:image" content="https://colbios.example.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Meridian: move money like it's software.">
+<meta property="og:image:alt" content="COLBIOS: your COLBIOS dues, made simple.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meridian — Move money like it's software">
-<meta name="twitter:description" content="One integration, 190 countries. Accept payments, run subscriptions, and see every cent settle in real time.">
-<meta name="twitter:image" content="https://meridian.example.com/assets/img/og-image.png">
+<meta name="twitter:title" content="COLBIOS — FUNAAB Student Payment Portal">
+<meta name="twitter:description" content="Pay your COLBIOS dues securely. The digital payment platform for FUNAAB student dues.">
+<meta name="twitter:image" content="https://colbios.example.com/assets/img/og-image.png">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/favicon.svg">
 
-<!-- Fonts are self-hosted: no third-party DNS/TLS on the critical path. -->
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/schibsted-grotesk-400-900-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibm-plex-mono-400-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/styles.css">
-<!-- Mark that JS is running, so scroll-reveal never hides content from a no-JS visitor. -->
+
+<!-- Deployment configuration. Edit assets/js/config.js, not this file. -->
+<script src="assets/js/config.js"></script>
 <script>document.documentElement.classList.add("js");</script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Meridian",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
-  "description": "Payments infrastructure for global businesses: accept payments in 135 currencies, manage subscriptions, and get real-time settlement analytics.",
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "lowPrice": "0",
-    "highPrice": "199",
-    "offerCount": "3"
-  }
+  "@type": "WebSite",
+  "name": "COLBIOS",
+  "url": "https://colbios.example.com/",
+  "description": "Information and access page for the COLBIOS payment platform, used by FUNAAB students to pay their dues."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is COLBIOS?","acceptedAnswer":{"@type":"Answer","text":"COLBIOS is a digital payment platform designed to make student dues payment simpler, more accessible and more convenient for the FUNAAB community. This website explains how it works and gives you access to it."}},
+    {"@type":"Question","name":"Where do I pay my dues?","acceptedAnswer":{"@type":"Answer","text":"On the COLBIOS payment platform. Use the Pay Now button anywhere on this page and you will be taken there to complete your payment."}},
+    {"@type":"Question","name":"Is this where I enter my payment details?","acceptedAnswer":{"@type":"Answer","text":"No. This website is the COLBIOS information and access page. It does not collect your matriculation number, card details or any payment information. Those are entered on the payment platform after you press Pay Now."}},
+    {"@type":"Question","name":"Can I access COLBIOS from my phone?","acceptedAnswer":{"@type":"Answer","text":"This website works on phones, tablets and computers. Pay Now opens the payment platform in the same browser, so you can continue on the same device."}},
+    {"@type":"Question","name":"What happens after I pay?","acceptedAnswer":{"@type":"Answer","text":"The payment platform processes your payment and provides your confirmation or receipt. Keep that confirmation. This website does not store any record of your payment and cannot look one up."}},
+    {"@type":"Question","name":"I was debited but did not receive confirmation. What should I do?","acceptedAnswer":{"@type":"Answer","text":"Do not pay a second time. Check your payment status on the COLBIOS payment platform first, as confirmation can take a short while to appear. If it still is not showing, use the support channel on the payment platform and quote the transaction details from your bank."}}
+  ]
 }
 </script>
 </head>
-<body>
+<body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ══ Section rail: quiet, functional in-page navigation (desktop only) ══ -->
-<nav class="rail" aria-label="Section navigation">
-  <span class="rail__line" aria-hidden="true"><span class="rail__fill" data-rail-fill></span></span>
-  <ul class="rail__list">
-    <li><a href="#features" data-rail-dot><span class="rail__dot"></span><span class="rail__name">Features</span></a></li>
-    <li><a href="#how" data-rail-dot><span class="rail__dot"></span><span class="rail__name">How it works</span></a></li>
-    <li><a href="#product" data-rail-dot><span class="rail__dot"></span><span class="rail__name">Product</span></a></li>
-    <li><a href="#customers" data-rail-dot><span class="rail__dot"></span><span class="rail__name">Customers</span></a></li>
-    <li><a href="#pricing" data-rail-dot><span class="rail__dot"></span><span class="rail__name">Pricing</span></a></li>
-    <li><a href="#faq" data-rail-dot><span class="rail__dot"></span><span class="rail__name">Questions</span></a></li>
-  </ul>
-</nav>
-
-<!-- ══ Navigation ══ -->
-<header class="nav" data-nav>
-  <div class="nav__inner">
-    <a class="brand" href="#" aria-label="Meridian, home">
-      <svg class="brand__mark" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
-        <path d="M12 2.4a9.6 9.6 0 0 1 0 19.2z" fill="currentColor" class="brand__lit"/>
-        <circle cx="12" cy="12" r="9.6" fill="none" stroke="currentColor" stroke-width="1.3"/>
-        <ellipse cx="12" cy="12" rx="4.3" ry="9.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".65"/>
-        <path d="M2.4 12h19.2" stroke="currentColor" stroke-width="1.1" opacity=".65"/>
-      </svg>
-      <span class="brand__word">Meridian</span>
+<!-- ══ Header ══ -->
+<header class="site-head" data-head>
+  <div class="site-head__inner">
+    <a class="brand" href="#top" aria-label="COLBIOS, back to top">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" focusable="false">
+          <path d="M12 2.3 20.1 5.4v5.9c0 4.6-3.2 8.4-8.1 10.4-4.9-2-8.1-5.8-8.1-10.4V5.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M8.3 12.1 10.9 14.8 15.8 9.6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">COLBIOS</span>
+        <span class="brand__sub">FUNAAB student payments</span>
+      </span>
     </a>
 
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#product">Developers</a>
-      <a href="#customers">Company</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#how">How It Works</a>
+      <a href="#about">About COLBIOS</a>
+      <a href="#faq">Help</a>
     </nav>
 
-    <div class="nav__actions">
-      <a class="nav__signin" href="#">Sign in</a>
-      <a class="btn btn--primary btn--sm" href="#start">Start free</a>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
-        <span class="nav__bars" aria-hidden="true"><i></i><i></i></span>
-        <span class="u-sr">Open menu</span>
+    <div class="site-head__actions">
+      <a class="btn btn--pay btn--sm" data-pay href="#">Pay Now</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" data-menu-toggle>
+        <span class="menu-btn__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="u-sr" data-menu-label>Open menu</span>
       </button>
     </div>
   </div>
 
-  <div class="nav__mobile" id="mobile-menu" hidden data-menu>
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#product">Developers</a>
-    <a href="#customers">Company</a>
-    <a href="#">Sign in</a>
-    <a class="btn btn--primary" href="#start">Start free</a>
-  </div>
+  <nav class="mobile-nav" id="mobile-nav" hidden data-menu aria-label="Primary, mobile">
+    <a href="#top">Home</a>
+    <a href="#how">How It Works</a>
+    <a href="#about">About COLBIOS</a>
+    <a href="#faq">Help / FAQ</a>
+  </nav>
 </header>
 
 <main id="main">
 
 <!-- ══ Hero ══ -->
-<section class="hero zone-night" aria-labelledby="hero-title">
-  <div class="hero__sky" aria-hidden="true"></div>
-  <div class="hero__grid-lines" aria-hidden="true"></div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
 
-  <div class="hero__inner">
     <div class="hero__copy">
-      <p class="pill reveal" data-reveal>
-        <span class="pill__beacon" aria-hidden="true"></span>
-        <span class="mono" data-live-count data-count-min="1180" data-count-max="1340">1,284</span>
-        payments settled in the last minute
+      <p class="eyebrow reveal" data-reveal>
+        <span class="eyebrow__dot" aria-hidden="true"></span>FUNAAB student payments
       </p>
 
-      <h1 class="hero__title reveal" data-reveal id="hero-title">Move money<br>like it's<br>software.</h1>
+      <h1 class="hero__title reveal" data-reveal id="hero-title">Your COLBIOS dues,<br>made simple.</h1>
 
       <p class="hero__lede reveal" data-reveal>
-        Meridian is the payments platform behind modern businesses. Accept cards, wallets
-        and bank rails in 190 countries, run subscriptions that survive expired cards, and
-        watch every cent settle in real time — through one API and one dashboard.
+        Access the official COLBIOS payment platform to securely complete your student
+        dues payment — from your phone, tablet or computer.
       </p>
 
-      <div class="hero__cta reveal" data-reveal>
-        <a class="btn btn--primary btn--lg" href="#start">Start free</a>
-        <a class="btn btn--ghost btn--lg" href="#start">Talk to sales</a>
+      <div class="hero__actions reveal" data-reveal>
+        <a class="btn btn--pay btn--lg" data-pay href="#">
+          Pay Now
+          <svg class="btn__arrow" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false">
+            <path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn--quiet btn--lg" href="#how">How It Works</a>
       </div>
 
-      <p class="hero__trust reveal" data-reveal>
-        Trusted by 10,000+ businesses in 47 countries. No setup fees, no monthly minimum.
+      <p class="handoff-note reveal" data-reveal>
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true" focusable="false"><path d="M10 2.5 16.5 5v4.6c0 3.6-2.5 6.6-6.5 8.1-4-1.5-6.5-4.5-6.5-8.1V5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        You will be redirected to the COLBIOS payment platform to complete your payment.
       </p>
+
+      <ul class="assurances reveal" data-reveal>
+        <li>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M10 2.4 16.6 5v4.7c0 3.7-2.6 6.8-6.6 8.4-4-1.6-6.6-4.7-6.6-8.4V5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          Secure payments
+        </li>
+        <li>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.9 10.2 9 12.3l4.1-4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Digital confirmation
+        </li>
+        <li>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M10 3 17.5 6.6 10 10.2 2.5 6.6Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.6 8.4v3.9c0 1.6 2 2.9 4.4 2.9s4.4-1.3 4.4-2.9V8.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Student-focused
+        </li>
+      </ul>
     </div>
 
-    <div class="hero__stage reveal" data-reveal>
-      <div class="globe" data-globe-wrap>
-        <canvas class="globe__canvas" data-globe width="640" height="640"
-                role="img" aria-label="A rotating wireframe globe showing live payment routes between cities."></canvas>
-        <div class="globe__glow" aria-hidden="true"></div>
-      </div>
+    <figure class="hero__visual reveal" data-reveal>
+      <!-- A still preview of the separate payment platform — not a form. It is
+           wrapped in the same Pay Now link so pressing it does what it looks
+           like it does. -->
+      <a class="preview-link" data-pay href="#" aria-label="Pay Now: continue to the COLBIOS payment platform">
+      <span class="preview" aria-hidden="true">
+        <span class="preview__head">
+          <span class="preview__brand">
+            <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+              <path d="M12 2.3 20.1 5.4v5.9c0 4.6-3.2 8.4-8.1 10.4-4.9-2-8.1-5.8-8.1-10.4V5.4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M8.3 12.1 10.9 14.8 15.8 9.6" fill="none" stroke="var(--accent)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            COLBIOS
+          </span>
+          <span class="preview__tag">Payment platform</span>
+        </span>
 
-      <!-- Floating payment surfaces; parallax on pointer move -->
-      <article class="float float--auth" data-float data-depth="26" aria-label="Example authorization">
-        <header class="float__head">
-          <span class="float__tag float__tag--ok">Authorized</span>
-          <span class="mono float__ms">38&thinsp;ms</span>
-        </header>
-        <p class="float__amount mono">&euro;249.00</p>
-        <p class="float__meta">Visa &middot;&thinsp;4242 &middot; Amsterdam, NL</p>
-        <div class="float__bar" aria-hidden="true"><i style="width:96.4%"></i></div>
-      </article>
+        <span class="preview__body">
+          <span class="preview__label">Student dues</span>
 
-      <article class="float float--fx" data-float data-depth="-18" aria-label="Example currency conversion">
-        <p class="float__label">Converted &amp; settled</p>
-        <p class="float__fx mono"><span>SGD 12,480.00</span><span class="float__arrow" aria-hidden="true"></span><span>USD 9,214.66</span></p>
-        <p class="float__meta">Interbank + 0.2% &middot; settled 00:41 UTC</p>
-      </article>
-    </div>
-  </div>
+          <span class="preview__row">
+            <span class="preview__key">Payment status</span>
+            <span class="preview__status">
+              <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><circle cx="8" cy="8" r="7" fill="currentColor" opacity=".14"/><path d="M5.1 8.2 7 10.1l3.9-4.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified
+            </span>
+          </span>
 
-  <!-- Live settlement ticker -->
-  <div class="ticker" aria-label="Recent settlements">
-    <div class="ticker__track" data-ticker>
-      <span class="ticker__item"><b class="mono">SG&thinsp;&rarr;&thinsp;US</b> 12,480.00 settled</span>
-      <span class="ticker__item"><b class="mono">NG&thinsp;&rarr;&thinsp;EU</b> 3,204.55 settled</span>
-      <span class="ticker__item"><b class="mono">BR&thinsp;&rarr;&thinsp;GB</b> 890.20 settled</span>
-      <span class="ticker__item"><b class="mono">IN&thinsp;&rarr;&thinsp;AE</b> 64,110.75 settled</span>
-      <span class="ticker__item"><b class="mono">JP&thinsp;&rarr;&thinsp;US</b> 2,109.00 settled</span>
-      <span class="ticker__item"><b class="mono">KE&thinsp;&rarr;&thinsp;NL</b> 15,760.40 settled</span>
-      <span class="ticker__item"><b class="mono">MX&thinsp;&rarr;&thinsp;CA</b> 7,432.18 settled</span>
-      <span class="ticker__item"><b class="mono">AU&thinsp;&rarr;&thinsp;SG</b> 28,004.90 settled</span>
-    </div>
+          <span class="preview__row">
+            <span class="preview__key">Reference</span>
+            <span class="preview__val mono">COLBIOS&#8209;XXXX&#8209;XXXX</span>
+          </span>
+
+          <span class="preview__row preview__row--last">
+            <span class="preview__key">Receipt</span>
+            <span class="preview__val">Available after payment</span>
+          </span>
+
+          <span class="preview__cta">Continue</span>
+        </span>
+      </span>
+      </a>
+
+      <figcaption class="hero__caption">
+        A preview of the COLBIOS payment platform. Your details are entered
+        there, not on this page.
+      </figcaption>
+    </figure>
+
   </div>
 </section>
 
-<!-- ══ Trust bar ══ -->
-<section class="trust zone-night" aria-label="Customers">
-  <p class="trust__label">Payments infrastructure for</p>
-  <div class="trust__marquee">
-    <div class="trust__track" data-logo-track>
-      <span class="logo"><svg viewBox="0 0 26 26" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 2 24 13 13 24 2 13Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 6.5 19.5 13 13 19.5 6.5 13Z" fill="currentColor" class="logo__lit"/></svg><span>Northwind</span></span>
-      <span class="logo"><svg viewBox="0 0 26 26" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3 20 13 4l10 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 20 13 12.5 17.5 20Z" fill="currentColor" class="logo__lit"/></svg><span>Kestrel</span></span>
-      <span class="logo"><svg viewBox="0 0 26 26" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 3 22 8v10l-9 5-9-5V8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="13" cy="13" r="3.4" fill="currentColor" class="logo__lit"/></svg><span>Auric</span></span>
-      <span class="logo"><svg viewBox="0 0 26 26" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 20a9 9 0 0 1 18 0" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 20a4.5 4.5 0 0 1 9 0" fill="none" stroke="currentColor" stroke-width="1.6" class="logo__lit-s"/><circle cx="13" cy="20" r="1.6" fill="currentColor" class="logo__lit"/></svg><span>Halcyon</span></span>
-      <span class="logo"><svg viewBox="0 0 26 26" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 3v18H4Z" fill="currentColor" class="logo__lit"/><path d="M15 8v13h7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Vela</span></span>
-      <span class="logo"><svg viewBox="0 0 26 26" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="19" height="19" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 15.5 11 9l3 6.5L17 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="logo__lit-s"/></svg><span>Cadence</span></span>
-    </div>
-  </div>
-</section>
-
-<!-- ══ Sunrise: night gives way to day ══ -->
-<div class="horizon horizon--rise" aria-hidden="true">
-  <svg class="horizon__svg" viewBox="0 0 1440 180" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="riseSky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#061A22"/>
-        <stop offset=".55" stop-color="#0E3040"/>
-        <stop offset="1" stop-color="#F0F2F1"/>
-      </linearGradient>
-      <linearGradient id="riseLimb" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#F5B942" stop-opacity="0"/>
-        <stop offset=".35" stop-color="#F5B942"/>
-        <stop offset=".62" stop-color="#FF9A5B"/>
-        <stop offset="1" stop-color="#35D6A8" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <rect width="1440" height="180" fill="url(#riseSky)"/>
-    <path d="M-60 182 C 320 96, 1120 96, 1500 182" fill="none" stroke="url(#riseLimb)" stroke-width="2"/>
-    <path d="M-60 182 C 320 96, 1120 96, 1500 182" fill="none" stroke="url(#riseLimb)" stroke-width="14" opacity=".16"/>
-  </svg>
-</div>
-
-<!-- ══ Features ══ -->
-<section class="section zone-day" id="features" aria-labelledby="features-title">
+<!-- ══ Why students use COLBIOS ══ -->
+<section class="section" aria-labelledby="why-title">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="section__title" id="features-title">Everything a payment<br>needs, in one place.</h2>
-      <p class="section__lede">Most platforms hand you an API and wish you luck. Meridian covers the whole
-        journey — acceptance, risk, billing, currency and reporting — so your team ships product
-        instead of plumbing.</p>
+      <h2 class="section__title" id="why-title">Why students use COLBIOS</h2>
+      <p class="section__lede">One place to understand your dues payment, and one clear route
+        to completing it.</p>
     </div>
 
-    <div class="bento">
+    <ul class="benefits">
+      <li class="benefit reveal" data-reveal>
+        <span class="benefit__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><path d="M12 2.8 19.4 5.7v5.4c0 4.2-3 7.8-7.4 9.5-4.4-1.7-7.4-5.3-7.4-9.5V5.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.1 12.1 11.3 14.4 15.1 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3 class="benefit__title">Secure</h3>
+        <p class="benefit__text">Your payment is processed through a secure payment environment.</p>
+      </li>
 
-      <article class="tile tile--wide reveal" data-reveal data-spot>
-        <div class="tile__body">
-          <h3 class="tile__title">Global payments</h3>
-          <p class="tile__text">One integration, 190 countries. Meridian shows every shopper the way
-            they already pay — cards, Apple&nbsp;Pay, Pix, UPI, iDEAL, SEPA, M-Pesa — chosen automatically
-            from their device, country and basket size.</p>
-          <p class="tile__stat"><span class="mono" data-counter data-to="14.2" data-decimals="1">14.2</span><span class="tile__stat-unit">pt lift</span>
-            <span class="tile__stat-note">in checkout conversion when local methods are switched on</span></p>
-        </div>
-        <div class="tile__art tile__art--routes" aria-hidden="true">
-          <svg viewBox="0 0 420 220" class="routes">
-            <defs>
-              <linearGradient id="routeG" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#B4770C"/>
-                <stop offset=".45" stop-color="#F5B942"/>
-                <stop offset="1" stop-color="#35D6A8" stop-opacity=".45"/>
-              </linearGradient>
-            </defs>
-            <g class="routes__grid">
-              <path d="M0 60h420M0 110h420M0 160h420"/>
-              <path d="M70 0v220M140 0v220M210 0v220M280 0v220M350 0v220"/>
-            </g>
-            <g class="routes__arcs" fill="none" stroke="url(#routeG)" stroke-width="2.2" stroke-linecap="round">
-              <path d="M30 176 C 110 44, 240 44, 372 100"/>
-              <path d="M30 176 C 104 132, 226 152, 372 52"/>
-              <path d="M30 176 C 158 176, 296 134, 372 156"/>
-            </g>
-            <g class="routes__nodes">
-              <circle cx="30" cy="176" r="5"/><circle cx="372" cy="100" r="3.5"/>
-              <circle cx="372" cy="52" r="3.5"/><circle cx="372" cy="156" r="3.5"/>
-            </g>
-          </svg>
-        </div>
-      </article>
+      <li class="benefit reveal" data-reveal>
+        <span class="benefit__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><path d="M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3 class="benefit__title">Simple</h3>
+        <p class="benefit__text">Access the payment platform and complete your dues payment without
+          unnecessary steps.</p>
+      </li>
 
-      <article class="tile tile--tall reveal" data-reveal data-spot>
-        <div class="tile__body">
-          <h3 class="tile__title">Fraud prevention</h3>
-          <p class="tile__text">Adaptive risk scoring trained on eight billion transactions. It stops
-            card testing and stolen credentials in about 40&nbsp;milliseconds — and lets your regulars
-            straight through.</p>
-        </div>
-        <div class="tile__art tile__art--risk" aria-hidden="true">
-          <div class="risk">
-            <div class="risk__row risk__row--ok"><span class="risk__dot"></span><span class="mono">score 04</span><span class="risk__verdict">Approved</span></div>
-            <div class="risk__row risk__row--ok"><span class="risk__dot"></span><span class="mono">score 11</span><span class="risk__verdict">Approved</span></div>
-            <div class="risk__row risk__row--bad"><span class="risk__dot"></span><span class="mono">score 97</span><span class="risk__verdict">Blocked</span></div>
-            <div class="risk__row risk__row--ok"><span class="risk__dot"></span><span class="mono">score 09</span><span class="risk__verdict">Approved</span></div>
-            <div class="risk__row risk__row--ok"><span class="risk__dot"></span><span class="mono">score 07</span><span class="risk__verdict">Approved</span></div>
-            <div class="risk__row risk__row--ok"><span class="risk__dot"></span><span class="mono">score 16</span><span class="risk__verdict">Approved</span></div>
-          </div>
-        </div>
-      </article>
+      <li class="benefit reveal" data-reveal>
+        <span class="benefit__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><rect x="7" y="2.6" width="10" height="18.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 18.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3 class="benefit__title">Convenient</h3>
+        <p class="benefit__text">Pay online from your phone, tablet or computer.</p>
+      </li>
 
-      <article class="tile reveal" data-reveal data-spot>
-        <div class="tile__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="M16 5a11 11 0 1 0 11 11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M27 5v7h-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
-        </div>
-        <h3 class="tile__title">Subscriptions</h3>
-        <p class="tile__text">Smart retries recover 38% of failed renewals by timing each attempt to the
-          issuer. Trials, proration, upgrades and dunning emails are handled for you.</p>
-      </article>
-
-      <article class="tile reveal" data-reveal data-spot>
-        <div class="tile__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="M5 26h22" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 22V13m6 9V6m6 16v-6m6 6V9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </div>
-        <h3 class="tile__title">Real-time analytics</h3>
-        <p class="tile__text">Authorization rates, settlement timing and cohort revenue update as
-          payments land — not in an overnight batch you read the next morning.</p>
-      </article>
-
-      <article class="tile reveal" data-reveal data-spot>
-        <div class="tile__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.7"/><ellipse cx="16" cy="16" rx="4.6" ry="11" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/><path d="M5.4 16h21.2" stroke="currentColor" stroke-width="1.4" opacity=".7"/></svg>
-        </div>
-        <h3 class="tile__title">Multi-currency</h3>
-        <p class="tile__text">Hold, convert and pay out in 135 currencies at interbank plus 0.2%. Price
-          locally, settle wherever your treasury actually lives.</p>
-      </article>
-
-      <article class="tile tile--code reveal" data-reveal>
-        <div class="tile__body tile__body--code">
-          <h3 class="tile__title">Built for the people who build</h3>
-          <p class="tile__text">SDKs in nine languages, idempotent by default, and a sandbox that
-            mirrors production down to the decline codes. Most teams take their first live
-            payment on day one.</p>
-          <ul class="tile__list">
-            <li>Typed SDKs &amp; OpenAPI spec</li>
-            <li>Webhooks with replay</li>
-            <li>Test cards for every decline</li>
-          </ul>
-        </div>
-        <div class="code" role="img" aria-label="Code sample: creating a payment with the Meridian JavaScript SDK.">
-          <div class="code__bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">checkout.js</span></div>
-<pre class="code__pre mono"><span class="c-k">const</span> payment = <span class="c-k">await</span> meridian.payments.<span class="c-f">create</span>({
-  amount:   <span class="c-n">24_900</span>,
-  currency: <span class="c-s">"eur"</span>,
-  method:   <span class="c-s">"auto"</span>,   <span class="c-c">// cards, wallets, local rails</span>
-  customer: <span class="c-s">"cus_9Fq2xLd"</span>,
-  metadata: { order: <span class="c-s">"NW-10482"</span> }
-});
-
-payment.status; <span class="c-c">// "authorized" &middot; 38ms</span></pre>
-        </div>
-      </article>
-
-    </div>
+      <li class="benefit reveal" data-reveal>
+        <span class="benefit__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><path d="M6 2.8h9.2L19 6.6v14.6H6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13.6 11 15.6 15 11.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3 class="benefit__title">Confirmable</h3>
+        <p class="benefit__text">Receive confirmation of completed payments through the payment
+          platform.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
 <!-- ══ How it works ══ -->
-<section class="section zone-day" id="how" aria-labelledby="how-title">
+<section class="section section--tint" id="how" aria-labelledby="how-title">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="section__title" id="how-title">Live in an afternoon.</h2>
-      <p class="section__lede">No sales call, no integration fee, no six-week onboarding. Three steps,
-        in the order you'd expect.</p>
+      <h2 class="section__title" id="how-title">How COLBIOS works</h2>
+      <p class="section__lede">Three steps, and only one of them happens on this website.</p>
     </div>
 
-    <ol class="steps" data-steps>
-      <span class="steps__thread" aria-hidden="true"><span class="steps__thread-fg" data-thread></span></span>
-
+    <ol class="steps">
       <li class="step reveal" data-reveal>
-        <span class="step__num mono">01</span>
-        <h3 class="step__title">Create your account</h3>
-        <p class="step__text">Two minutes and an email address. Test keys work immediately, so you can
-          build before compliance finishes reviewing.</p>
+        <span class="step__num mono" aria-hidden="true">01</span>
+        <h3 class="step__title">Start here</h3>
+        <p class="step__text">Visit the COLBIOS website and press <strong>Pay Now</strong>.
+          That is everything this page asks of you.</p>
       </li>
       <li class="step reveal" data-reveal>
-        <span class="step__num mono">02</span>
-        <h3 class="step__title">Drop in checkout</h3>
-        <p class="step__text">Use the prebuilt checkout for a hosted flow, or call the API directly for
-          full control of the interface.</p>
+        <span class="step__num mono" aria-hidden="true">02</span>
+        <h3 class="step__title">Complete your payment</h3>
+        <p class="step__text">You are taken to the secure COLBIOS payment platform to enter
+          your details and complete payment.</p>
       </li>
       <li class="step reveal" data-reveal>
-        <span class="step__num mono">03</span>
-        <h3 class="step__title">Get paid</h3>
-        <p class="step__text">Money lands on a two-day rolling schedule to any account you nominate.
-          Same-day payouts available on request.</p>
+        <span class="step__num mono" aria-hidden="true">03</span>
+        <h3 class="step__title">Get confirmation</h3>
+        <p class="step__text">Once your payment is processed, the payment platform provides
+          your payment confirmation and receipt.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<!-- ══ Product showcase: dark product surface set into the daylight page ══ -->
-<section class="section zone-day" id="product" aria-labelledby="product-title">
-  <div class="wrap">
-    <div class="section__head section__head--split">
-      <h2 class="section__title" id="product-title">The dashboard your<br>finance team will actually open.</h2>
-      <p class="section__lede">Every payment, payout and dispute in one ledger that reconciles itself.
-        Try the tabs — the numbers are illustrative, the layout is the real thing.</p>
-    </div>
-
-    <div class="console reveal" data-reveal data-tilt>
-      <div class="console__chrome">
-        <span class="console__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="console__url mono">app.meridian.com/overview</span>
-        <span class="console__live"><span class="pill__beacon" aria-hidden="true"></span>Live</span>
-      </div>
-
-      <div class="console__body">
-        <aside class="console__side" aria-hidden="true">
-          <span class="console__brand"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="9.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 2.4a9.6 9.6 0 0 1 0 19.2z" fill="currentColor"/></svg></span>
-          <span class="console__nav-item is-on"></span>
-          <span class="console__nav-item"></span>
-          <span class="console__nav-item"></span>
-          <span class="console__nav-item"></span>
-          <span class="console__nav-item"></span>
-        </aside>
-
-        <div class="console__main">
-          <div class="console__tabs" role="tablist" aria-label="Dashboard views">
-            <button class="tab is-active" role="tab" aria-selected="true"  id="tab-overview" aria-controls="panel-view" data-tab="overview">Overview</button>
-            <button class="tab"           role="tab" aria-selected="false" id="tab-payments" aria-controls="panel-view" data-tab="payments" tabindex="-1">Payments</button>
-            <button class="tab"           role="tab" aria-selected="false" id="tab-payouts"  aria-controls="panel-view" data-tab="payouts"  tabindex="-1">Payouts</button>
-            <label class="switch switch--compare">
-              <input type="checkbox" data-compare>
-              <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
-              <span class="switch__label">Compare to last month</span>
-            </label>
-          </div>
-
-          <div class="console__panel" role="tabpanel" id="panel-view" aria-labelledby="tab-overview" tabindex="0">
-            <div class="kpis">
-              <div class="kpi">
-                <p class="kpi__label">Net volume</p>
-                <p class="kpi__value mono"><span data-kpi="volume">$2,847,392.44</span></p>
-                <p class="kpi__delta kpi__delta--up mono" data-kpi="volumeDelta">+18.2%</p>
-              </div>
-              <div class="kpi">
-                <p class="kpi__label">Authorization rate</p>
-                <p class="kpi__value mono"><span data-kpi="auth">96.4%</span></p>
-                <p class="kpi__delta kpi__delta--up mono" data-kpi="authDelta">+1.4 pts</p>
-              </div>
-              <div class="kpi">
-                <p class="kpi__label">Settled today</p>
-                <p class="kpi__value mono"><span data-kpi="settled">$412,908.10</span></p>
-                <p class="kpi__delta mono" data-kpi="settledDelta">12 payouts</p>
-              </div>
-              <div class="kpi">
-                <p class="kpi__label">Disputes</p>
-                <p class="kpi__value mono"><span data-kpi="disputes">0.04%</span></p>
-                <p class="kpi__delta kpi__delta--down mono" data-kpi="disputesDelta">&minus;0.02 pts</p>
-              </div>
-            </div>
-
-            <figure class="chart">
-              <svg class="chart__svg" viewBox="0 0 800 240" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="fillA" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#F5B942" stop-opacity=".34"/>
-                    <stop offset="1" stop-color="#F5B942" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <g class="chart__grid">
-                  <path d="M0 40h800M0 100h800M0 160h800M0 220h800"/>
-                </g>
-                <path class="chart__area" data-chart-area d=""/>
-                <path class="chart__ghost" data-chart-ghost d="" vector-effect="non-scaling-stroke"/>
-                <path class="chart__line" data-chart-line d="" vector-effect="non-scaling-stroke"/>
-              </svg>
-              <figcaption class="chart__axis mono" data-chart-axis></figcaption>
-            </figure>
-
-            <table class="ledger">
-              <caption class="u-sr">Recent payments</caption>
-              <thead>
-                <tr><th scope="col">Customer</th><th scope="col">Method</th><th scope="col">Region</th><th scope="col" class="ledger__num">Amount</th><th scope="col">Status</th></tr>
-              </thead>
-              <tbody data-ledger></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ══ Mid-page handoff CTA ══ -->
+<section class="cta-band" aria-labelledby="cta-mid-title">
+  <div class="wrap wrap--narrow cta-band__inner">
+    <h2 class="cta-band__title" id="cta-mid-title">Ready to pay your dues?</h2>
+    <p class="cta-band__lede">Continue to the COLBIOS payment platform.</p>
+    <a class="btn btn--pay btn--lg" data-pay href="#">
+      Pay Now
+      <svg class="btn__arrow" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false">
+        <path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <p class="cta-band__note">You will be redirected to the payment platform to complete your
+      transaction.</p>
   </div>
 </section>
 
-<!-- ══ Stats ══ -->
-<section class="stats zone-day" aria-label="Network at a glance">
-  <div class="wrap">
-    <dl class="stats__grid">
-      <div class="stat reveal" data-reveal>
-        <dt class="stat__label">Processed in 2025</dt>
-        <dd class="stat__value mono">$<span data-counter data-to="184" data-decimals="0">184</span>B</dd>
-      </div>
-      <div class="stat reveal" data-reveal>
-        <dt class="stat__label">Platform uptime</dt>
-        <dd class="stat__value mono"><span data-counter data-to="99.995" data-decimals="3">99.995</span>%</dd>
-      </div>
-      <div class="stat reveal" data-reveal>
-        <dt class="stat__label">Countries served</dt>
-        <dd class="stat__value mono"><span data-counter data-to="190" data-decimals="0">190</span></dd>
-      </div>
-      <div class="stat reveal" data-reveal>
-        <dt class="stat__label">Median authorization</dt>
-        <dd class="stat__value mono"><span data-counter data-to="42" data-decimals="0">42</span>ms</dd>
-      </div>
-    </dl>
-  </div>
-</section>
-
-<!-- ══ Testimonials ══ -->
-<section class="section zone-day" id="customers" aria-labelledby="customers-title">
+<!-- ══ About COLBIOS + the handoff ══ -->
+<section class="section" id="about" aria-labelledby="about-title">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="section__title" id="customers-title">Migrations that paid<br>for themselves.</h2>
-      <p class="section__lede">Three teams who moved their volume to Meridian, in their own words.</p>
+      <h2 class="section__title" id="about-title">What is COLBIOS?</h2>
+      <p class="section__lede section__lede--lead">COLBIOS is a digital payment platform designed
+        to make student dues payment simpler, more accessible and more convenient for the
+        <span data-institution-short>FUNAAB</span> community.</p>
     </div>
 
-    <div class="quotes">
-      <figure class="quote reveal" data-reveal>
-        <blockquote><p>We switched over a weekend and our authorization rate climbed 4.1 points.
-          At our volume the migration paid for itself in eleven days.</p></blockquote>
-        <figcaption class="quote__by">
-          <span class="avatar avatar--a" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23"/><path d="M6 30a18 18 0 0 1 36 0" class="a-1"/><path d="M13 34a11 11 0 0 1 22 0" class="a-2"/><circle cx="24" cy="18" r="4" class="a-3"/></svg></span>
-          <span><b>Ines Okonjo</b><span class="quote__role">VP Payments, Northwind Retail</span></span>
-        </figcaption>
-      </figure>
-
-      <figure class="quote quote--lift reveal" data-reveal>
-        <blockquote><p>The risk engine is the quietest part of our stack. Bad charges don't get
-          through and our regulars never see a challenge. I stopped checking it daily.</p></blockquote>
-        <figcaption class="quote__by">
-          <span class="avatar avatar--b" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23"/><path d="M24 4v40" class="a-1"/><ellipse cx="24" cy="24" rx="10" ry="20" class="a-2"/><circle cx="24" cy="24" r="5" class="a-3"/></svg></span>
-          <span><b>Tomas Ferreira</b><span class="quote__role">Head of Risk, Kestrel Travel</span></span>
-        </figcaption>
-      </figure>
-
-      <figure class="quote reveal" data-reveal>
-        <blockquote><p>Our finance team closes the month in two days instead of nine. Settlement
-          data finally matches the bank without a spreadsheet in between.</p></blockquote>
-        <figcaption class="quote__by">
-          <span class="avatar avatar--c" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23"/><path d="M8 16h32M8 24h32M8 32h32" class="a-1"/><path d="M30 8v32" class="a-2"/><circle cx="17" cy="24" r="4.5" class="a-3"/></svg></span>
-          <span><b>Priya Raman</b><span class="quote__role">CFO, Halcyon Software</span></span>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ══ Pricing ══ -->
-<section class="section zone-day" id="pricing" aria-labelledby="pricing-title">
-  <div class="wrap">
-    <div class="section__head section__head--center">
-      <h2 class="section__title" id="pricing-title">Priced like infrastructure,<br>not like a bank.</h2>
-      <p class="section__lede">Per-transaction pricing with no setup fee, no monthly minimum and no
-        charge for failed payments. Cancel whenever.</p>
-
-      <div class="billing reveal" data-reveal>
-        <span id="bill-m" class="billing__opt is-on" data-bill-label="month">Monthly</span>
-        <label class="switch">
-          <input type="checkbox" data-billing aria-labelledby="bill-m bill-y">
-          <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
-          <span class="u-sr">Show annual pricing</span>
-        </label>
-        <span id="bill-y" class="billing__opt" data-bill-label="year">Annual</span>
-        <span class="billing__save">Save 20%</span>
-      </div>
-    </div>
-
-    <div class="plans reveal" data-reveal>
-      <article class="plan">
-        <h3 class="plan__name">Starter</h3>
-        <p class="plan__price"><span class="mono plan__fig" data-price data-monthly="0" data-annual="0">$0</span><span class="plan__per">/month</span></p>
-        <p class="plan__rate mono">2.7% + 30&cent; per transaction</p>
-        <p class="plan__for">For teams taking their first payments, up to $50k a month.</p>
-        <a class="btn btn--ink btn--block" href="#start">Start free</a>
-        <ul class="plan__list">
-          <li>Every payment method, switched on by default</li>
-          <li>Hosted checkout and payment links</li>
-          <li>Payouts every two days</li>
-          <li>Email support, next business day</li>
+    <div class="split">
+      <article class="split__card reveal" data-reveal>
+        <p class="split__kicker">This website</p>
+        <h3 class="split__title">Information and access</h3>
+        <ul class="split__list">
+          <li>Explains what COLBIOS is and who it is for</li>
+          <li>Shows how the payment process works</li>
+          <li>Answers common questions before you start</li>
+          <li>Gives you the route into the payment platform</li>
         </ul>
+        <p class="split__foot split__foot--no">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.6 13.4 13.4 6.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          No payment details are entered here
+        </p>
       </article>
 
-      <article class="plan plan--featured">
-        <span class="plan__flag">Most chosen</span>
-        <h3 class="plan__name">Growth</h3>
-        <p class="plan__price"><span class="mono plan__fig" data-price data-monthly="199" data-annual="159">$199</span><span class="plan__per" data-per>/month</span></p>
-        <p class="plan__rate mono">2.4% + 25&cent; per transaction</p>
-        <p class="plan__for">For businesses scaling across borders and running recurring revenue.</p>
-        <a class="btn btn--primary btn--block" href="#start">Start free trial</a>
-        <ul class="plan__list">
-          <li>Everything in Starter</li>
-          <li>Subscriptions, trials and smart retries</li>
-          <li>Adaptive fraud rules you can tune</li>
-          <li>Settlement in 135 currencies</li>
-          <li>Shared Slack channel with our engineers</li>
-          <li>99.99% uptime commitment</li>
-        </ul>
-      </article>
+      <span class="split__arrow" aria-hidden="true">
+        <svg viewBox="0 0 40 24" width="40" height="24" focusable="false">
+          <path d="M2 12h32M27 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
 
-      <article class="plan">
-        <h3 class="plan__name">Enterprise</h3>
-        <p class="plan__price"><span class="plan__fig plan__fig--word">Custom</span></p>
-        <p class="plan__rate mono">Interchange++ and volume tiers</p>
-        <p class="plan__for">For platforms and marketplaces moving nine figures a year.</p>
-        <a class="btn btn--ink btn--block" href="#start">Talk to sales</a>
-        <ul class="plan__list">
-          <li>Everything in Growth</li>
-          <li>Dedicated processing capacity</li>
-          <li>A named solutions engineer</li>
-          <li>SSO, SCIM and audit logs</li>
-          <li>Custom payout schedules and treasury rails</li>
-          <li>99.995% uptime SLA with credits</li>
+      <article class="split__card split__card--platform reveal" data-reveal>
+        <p class="split__kicker">The COLBIOS payment platform</p>
+        <h3 class="split__title">Payment and confirmation</h3>
+        <ul class="split__list">
+          <li>Student identification</li>
+          <li>Payment processing</li>
+          <li>Transaction confirmation</li>
+          <li>Your receipt</li>
         </ul>
+        <p class="split__foot split__foot--yes">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.7 10.2 8.8 12.3 13.3 7.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          This is where you pay
+        </p>
       </article>
     </div>
+
+    <p class="split__caption">Pressing <strong>Pay Now</strong> anywhere on this site takes you
+      from the left side to the right side. That is the only thing this website does with your
+      payment.</p>
   </div>
 </section>
 
 <!-- ══ FAQ ══ -->
-<section class="section section--end zone-day" id="faq" aria-labelledby="faq-title">
+<section class="section section--tint" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="section__title" id="faq-title">Questions worth asking<br>before you migrate.</h2>
+      <h2 class="section__title" id="faq-title">Help and common questions</h2>
+      <p class="section__lede">If something here does not answer your question, support is
+        available through the payment platform.</p>
     </div>
 
-    <div class="faq" data-faq>
+    <div class="faq">
       <div class="faq__item">
         <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a1" id="q1">
-          How secure is Meridian?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          What is COLBIOS?<span class="faq__sign" aria-hidden="true"></span></button></h3>
         <div class="faq__a" id="a1" role="region" aria-labelledby="q1" hidden>
-          <p>We are certified PCI DSS Level 1 and SOC 2 Type II, audited annually. Card details never
-            touch your servers: they are tokenized in the browser and stored in a hardware-backed vault,
-            so your PCI scope stays at SAQ-A. Everything in transit uses TLS 1.3, and every field at rest
-            is encrypted with keys rotated on a 90-day cycle.</p>
+          <p>COLBIOS is a digital payment platform designed to make student dues payment simpler,
+            more accessible and more convenient for the <span data-institution-short>FUNAAB</span>
+            community. This website explains how it works and gives you access to it.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a2" id="q2">
-          What does it actually cost?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          Where do I pay my dues?<span class="faq__sign" aria-hidden="true"></span></button></h3>
         <div class="faq__a" id="a2" role="region" aria-labelledby="q2" hidden>
-          <p>The rate on the plan, and nothing else. No setup fee, no monthly minimum, no charge for
-            failed or declined payments, and no fee to open extra currency balances. Cross-border and
-            currency conversion are quoted up front at interbank plus 0.2%. Chargebacks cost $15, refunded
-            to you if you win the dispute.</p>
+          <p>On the COLBIOS payment platform. Use the <strong>Pay Now</strong> button anywhere on
+            this page and you will be taken there to complete your payment.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a3" id="q3">
-          How long does integration take?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          Is this where I enter my payment details?<span class="faq__sign" aria-hidden="true"></span></button></h3>
         <div class="faq__a" id="a3" role="region" aria-labelledby="q3" hidden>
-          <p>Hosted checkout is a single API call and a redirect — most teams are taking test payments
-            within an hour. A custom flow with our SDKs typically takes two to three days. If you are
-            moving from another provider we will migrate your stored cards and customer records for you,
-            usually inside a week and with no re-authentication for your customers.</p>
+          <p>No. This website is the COLBIOS information and access page. It does not collect your
+            matriculation number, card details or any payment information. Those are entered on the
+            payment platform after you press <strong>Pay Now</strong>.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a4" id="q4">
-          Which methods and currencies are supported?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          Can I access COLBIOS from my phone?<span class="faq__sign" aria-hidden="true"></span></button></h3>
         <div class="faq__a" id="a4" role="region" aria-labelledby="q4" hidden>
-          <p>All major card networks, Apple Pay, Google Pay, PayPal, and more than 60 local methods
-            including Pix, UPI, iDEAL, Bancontact, BLIK, SEPA Direct Debit, ACH and M-Pesa. You can
-            charge in 135 currencies and settle into any of 42. Meridian picks the methods to display
-            based on the shopper's country, device and basket size.</p>
+          <p>This website works on phones, tablets and computers. <strong>Pay Now</strong> opens the
+            payment platform in the same browser, so you can start here and continue on the same
+            device.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a5" id="q5">
-          When does money reach my bank?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          What happens after I pay?<span class="faq__sign" aria-hidden="true"></span></button></h3>
         <div class="faq__a" id="a5" role="region" aria-labelledby="q5" hidden>
-          <p>On a rolling two-day schedule by default, including weekends in supported markets. Growth
-            and Enterprise accounts can move to same-day or on-demand payouts. Every payout arrives with
-            a reconciliation file that maps each deposit line back to the individual payments, refunds
-            and fees inside it.</p>
+          <p>The payment platform processes your payment and provides your confirmation or receipt.
+            Keep that confirmation. This website does not store any record of your payment and
+            cannot look one up.</p>
         </div>
       </div>
 
       <div class="faq__item">
         <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a6" id="q6">
-          What support do I get?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+          I was debited but did not receive confirmation. What should I do?<span class="faq__sign" aria-hidden="true"></span></button></h3>
         <div class="faq__a" id="a6" role="region" aria-labelledby="q6" hidden>
-          <p>Every account gets documentation, the sandbox and email support answered by engineers, not
-            a script. Growth adds a shared Slack channel with a one-hour response target during business
-            hours. Enterprise adds 24/7 paging, a named solutions engineer and quarterly reviews of your
-            authorization rates.</p>
+          <p>Do not pay a second time. Check your payment status on the COLBIOS payment platform
+            first, as confirmation can take a short while to appear. If it still is not showing, use
+            the support channel on the payment platform and quote the transaction details from your
+            bank.</p>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="a7" id="q7">
+          Who do I contact for help?<span class="faq__sign" aria-hidden="true"></span></button></h3>
+        <div class="faq__a" id="a7" role="region" aria-labelledby="q7" hidden>
+          <p data-support-answer>Support is provided through the COLBIOS payment platform. Use the
+            help or support option there, so your enquiry reaches the team that can see your
+            payment.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ Sunset: day returns to night ══ -->
-<div class="horizon horizon--set" aria-hidden="true">
-  <svg class="horizon__svg" viewBox="0 0 1440 180" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="setSky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#F0F2F1"/>
-        <stop offset=".45" stop-color="#0E3040"/>
-        <stop offset="1" stop-color="#061A22"/>
-      </linearGradient>
-      <linearGradient id="setLimb" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#35D6A8" stop-opacity="0"/>
-        <stop offset=".38" stop-color="#FF9A5B"/>
-        <stop offset=".65" stop-color="#F5B942"/>
-        <stop offset="1" stop-color="#F5B942" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <rect width="1440" height="180" fill="url(#setSky)"/>
-    <path d="M-60 -2 C 320 84, 1120 84, 1500 -2" fill="none" stroke="url(#setLimb)" stroke-width="2"/>
-  </svg>
-</div>
-
 <!-- ══ Final CTA ══ -->
-<section class="start zone-night" id="start" aria-labelledby="start-title">
-  <div class="start__aurora" aria-hidden="true"></div>
-  <div class="wrap wrap--narrow">
-    <h2 class="start__title reveal" data-reveal id="start-title">Take your first payment tonight.</h2>
-    <p class="start__lede reveal" data-reveal>Create an account and use live test keys straight away.
-      When you're ready for real money, activation takes about ten minutes.</p>
-
-    <form class="start__form reveal" data-reveal data-signup novalidate>
-      <div class="field">
-        <label class="u-sr" for="email">Work email</label>
-        <input class="field__input" type="email" id="email" name="email" inputmode="email"
-               autocomplete="email" placeholder="you@company.com" required
-               aria-describedby="email-help">
-        <button class="btn btn--primary" type="submit">Create account</button>
-      </div>
-      <p class="field__help" id="email-help" data-form-msg>Free forever on Starter. No card required.</p>
-    </form>
-
-    <p class="start__alt reveal" data-reveal>Moving significant volume?
-      <a href="#start">Talk to sales</a> and we'll model your rates against your last statement.</p>
+<section class="cta-band cta-band--final" aria-labelledby="cta-final-title">
+  <div class="wrap wrap--narrow cta-band__inner">
+    <h2 class="cta-band__title" id="cta-final-title">Pay your COLBIOS dues securely.</h2>
+    <p class="cta-band__lede">A simple, secure and convenient way for
+      <span data-institution-short>FUNAAB</span> students to complete their required payments.</p>
+    <a class="btn btn--pay btn--lg" data-pay href="#">
+      Pay Now
+      <svg class="btn__arrow" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false">
+        <path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <p class="cta-band__note">You will be redirected to the COLBIOS payment platform to complete
+      your payment.</p>
   </div>
 </section>
 
 </main>
 
 <!-- ══ Footer ══ -->
-<footer class="foot zone-night">
+<footer class="site-foot">
   <div class="wrap">
-    <div class="foot__top">
-      <div class="foot__brand">
-        <a class="brand" href="#" aria-label="Meridian, home">
-          <svg class="brand__mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-            <path d="M12 2.4a9.6 9.6 0 0 1 0 19.2z" fill="currentColor" class="brand__lit"/>
-            <circle cx="12" cy="12" r="9.6" fill="none" stroke="currentColor" stroke-width="1.3"/>
-            <ellipse cx="12" cy="12" rx="4.3" ry="9.6" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".65"/>
-            <path d="M2.4 12h19.2" stroke="currentColor" stroke-width="1.1" opacity=".65"/>
-          </svg>
-          <span class="brand__word">Meridian</span>
-        </a>
-        <p class="foot__tag">Payments infrastructure for businesses that don't stop at a border.</p>
-        <ul class="social">
-          <li><a href="#" aria-label="Meridian on X"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 3h4.2l5 6.6L17.8 3H21l-7.3 8.7L21.4 21H17l-5.3-7L5.6 21H2.4l7.7-9.2Z" fill="currentColor"/></svg></a></li>
-          <li><a href="#" aria-label="Meridian on GitHub"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="currentColor"/></svg></a></li>
-          <li><a href="#" aria-label="Meridian on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4.5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 9.5h3v11H3v-11Zm6 0h2.9v1.5c.5-.9 1.6-1.7 3.2-1.7 2.6 0 3.9 1.6 3.9 4.6v6.6h-3v-6c0-1.6-.6-2.5-1.9-2.5-1.1 0-1.8.7-2.1 1.5v7H9v-11Z" fill="currentColor"/></svg></a></li>
-        </ul>
+    <div class="site-foot__top">
+      <div class="site-foot__brand">
+        <span class="brand brand--foot">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" focusable="false">
+              <path d="M12 2.3 20.1 5.4v5.9c0 4.6-3.2 8.4-8.1 10.4-4.9-2-8.1-5.8-8.1-10.4V5.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M8.3 12.1 10.9 14.8 15.8 9.6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">COLBIOS</span>
+            <span class="brand__sub">FUNAAB student payments</span>
+          </span>
+        </span>
+        <p class="site-foot__blurb">The digital payment platform for student dues at
+          <span data-institution-name>Federal University of Agriculture, Abeokuta</span>.</p>
+        <a class="btn btn--pay btn--sm" data-pay href="#">Pay Now</a>
       </div>
 
-      <nav class="foot__cols" aria-label="Footer">
-        <div class="foot__col">
-          <h2 class="foot__h">Product</h2>
-          <ul><li><a href="#features">Payments</a></li><li><a href="#features">Subscriptions</a></li><li><a href="#features">Fraud &amp; risk</a></li><li><a href="#product">Analytics</a></li><li><a href="#features">Payouts</a></li></ul>
+      <nav class="site-foot__cols" aria-label="Footer">
+        <div class="site-foot__col">
+          <h2 class="site-foot__h">Site</h2>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#about">About COLBIOS</a></li>
+            <li><a href="#faq">Help</a></li>
+          </ul>
         </div>
-        <div class="foot__col">
-          <h2 class="foot__h">Developers</h2>
-          <ul><li><a href="#product">Documentation</a></li><li><a href="#product">API reference</a></li><li><a href="#product">SDKs</a></li><li><a href="#product">Webhooks</a></li><li><a href="#product">Status</a></li></ul>
+        <div class="site-foot__col">
+          <h2 class="site-foot__h">Legal</h2>
+          <ul>
+            <li><a data-optional-link data-url-key="PRIVACY_URL" href="#">Privacy</a></li>
+            <li><a data-optional-link data-url-key="TERMS_URL" href="#">Terms</a></li>
+          </ul>
         </div>
-        <div class="foot__col">
-          <h2 class="foot__h">Company</h2>
-          <ul><li><a href="#customers">About</a></li><li><a href="#customers">Customers</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#start">Contact</a></li></ul>
-        </div>
-        <div class="foot__col">
-          <h2 class="foot__h">Legal</h2>
-          <ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Acceptable use</a></li><li><a href="#">Sub-processors</a></li><li><a href="#">Complaints</a></li></ul>
+        <div class="site-foot__col site-foot__col--support">
+          <h2 class="site-foot__h">Support</h2>
+          <div data-support-block>
+            <p class="site-foot__support-note">Support is provided through the COLBIOS payment
+              platform.</p>
+          </div>
         </div>
       </nav>
     </div>
 
-    <div class="foot__bottom">
-      <ul class="badges" aria-label="Compliance">
-        <li class="badge"><span class="badge__mark" aria-hidden="true"></span>PCI DSS Level 1</li>
-        <li class="badge"><span class="badge__mark" aria-hidden="true"></span>SOC 2 Type II</li>
-        <li class="badge"><span class="badge__mark" aria-hidden="true"></span>GDPR</li>
-        <li class="badge"><span class="badge__mark" aria-hidden="true"></span>TLS 1.3</li>
-      </ul>
-      <p class="foot__fine">&copy; 2026 Meridian Financial Technologies. Meridian is a fictional brand
-        created for this design; figures and customers are illustrative.</p>
+    <div class="site-foot__bottom">
+      <p class="site-foot__legal">
+        &copy; <span data-year>2026</span> COLBIOS.
+        <span data-institution-relationship></span>
+      </p>
+      <p class="site-foot__legal site-foot__legal--muted">This website provides information about
+        COLBIOS and access to the COLBIOS payment platform. Payments are completed on the payment
+        platform.</p>
     </div>
   </div>
 </footer>
+
+<!-- ══ Handoff overlay: shown briefly while redirecting to the platform ══ -->
+<div class="handoff" data-handoff hidden>
+  <div class="handoff__box" role="status" aria-live="polite" tabindex="-1">
+    <span class="handoff__mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="30" height="30" focusable="false">
+        <path d="M12 2.3 20.1 5.4v5.9c0 4.6-3.2 8.4-8.1 10.4-4.9-2-8.1-5.8-8.1-10.4V5.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M8.3 12.1 10.9 14.8 15.8 9.6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <p class="handoff__title" data-handoff-title>Opening COLBIOS payment platform…</p>
+    <p class="handoff__note" data-handoff-note>You are being redirected to complete your payment.</p>
+    <button class="btn btn--quiet btn--sm handoff__close" type="button" data-handoff-close hidden>Close</button>
+  </div>
+</div>
+
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

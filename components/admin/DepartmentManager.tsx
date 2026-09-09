@@ -3,12 +3,11 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 
+import { IDLE, type ActionState } from "@/app/admin/(dashboard)/action-state";
 import {
-  IDLE,
   createDepartmentAction,
   updateDepartmentAction,
 } from "@/app/admin/(dashboard)/departments/actions";
-import type { ActionState } from "@/app/admin/(dashboard)/payments/actions";
 
 type DepartmentRow = {
   id: string;

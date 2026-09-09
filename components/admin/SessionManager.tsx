@@ -3,13 +3,12 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
+import { IDLE, type ActionState } from "@/app/admin/(dashboard)/action-state";
 import {
-  IDLE,
   activateSessionAction,
   createSessionAction,
   deactivateSessionAction,
 } from "@/app/admin/(dashboard)/sessions/actions";
-import type { ActionState } from "@/app/admin/(dashboard)/payments/actions";
 import { formatMoney } from "@/lib/format/money";
 
 type SessionRow = {

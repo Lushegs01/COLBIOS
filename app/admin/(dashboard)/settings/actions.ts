@@ -14,9 +14,8 @@ import { isUniqueViolation } from "@/lib/payments/service";
 import { clientIdentifier } from "@/lib/rate-limit/limiter";
 import { adminPasswordSchema, cuidSchema, emailSchema } from "@/lib/validation/schemas";
 
-import type { ActionState } from "../payments/actions";
+import type { ActionState } from "../action-state";
 
-export const IDLE: ActionState = { error: null, success: null };
 
 const ROLES = ["SUPER_ADMIN", "ADMIN", "FINANCE"] as const;
 

@@ -3,12 +3,11 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 
+import { IDLE, type ActionState } from "@/app/admin/(dashboard)/action-state";
 import {
-  IDLE_STATE,
   manualAdjustmentAction,
   refundAction,
   reverifyPaymentAction,
-  type ActionState,
 } from "@/app/admin/(dashboard)/payments/actions";
 import type { PaymentStatusValue } from "@/lib/payments/state";
 
@@ -36,13 +35,13 @@ export default function PaymentAdminActions({
 }) {
   const [verifyState, verify] = useActionState<ActionState, FormData>(
     reverifyPaymentAction,
-    IDLE_STATE,
+    IDLE,
   );
   const [adjustState, adjust] = useActionState<ActionState, FormData>(
     manualAdjustmentAction,
-    IDLE_STATE,
+    IDLE,
   );
-  const [refundState, refund] = useActionState<ActionState, FormData>(refundAction, IDLE_STATE);
+  const [refundState, refund] = useActionState<ActionState, FormData>(refundAction, IDLE);
 
   const [showAdjust, setShowAdjust] = useState(false);
   const [showRefund, setShowRefund] = useState(false);

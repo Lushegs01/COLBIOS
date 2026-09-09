@@ -4,13 +4,12 @@ import Link from "next/link";
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 
+import { IDLE, type ActionState } from "@/app/admin/(dashboard)/action-state";
 import {
-  IDLE,
   createFeeAction,
   toggleFeeAction,
   updateFeeAction,
 } from "@/app/admin/(dashboard)/fees/actions";
-import type { ActionState } from "@/app/admin/(dashboard)/payments/actions";
 import { LEVEL_CODES, levelLabel, type LevelCode } from "@/lib/format/level";
 import { formatMoney, minorToMajorString } from "@/lib/format/money";
 

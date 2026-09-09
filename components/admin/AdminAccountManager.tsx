@@ -3,13 +3,12 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 
+import { IDLE, type ActionState } from "@/app/admin/(dashboard)/action-state";
 import {
-  IDLE,
   changePasswordAction,
   createAdminAction,
   toggleAdminAction,
 } from "@/app/admin/(dashboard)/settings/actions";
-import type { ActionState } from "@/app/admin/(dashboard)/payments/actions";
 
 type AdminRow = {
   id: string;

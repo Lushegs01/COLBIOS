@@ -13,9 +13,8 @@ import { isUniqueViolation } from "@/lib/payments/service";
 import { clientIdentifier } from "@/lib/rate-limit/limiter";
 import { departmentCreateSchema, departmentUpdateSchema } from "@/lib/validation/schemas";
 
-import type { ActionState } from "../payments/actions";
+import type { ActionState } from "../action-state";
 
-export const IDLE: ActionState = { error: null, success: null };
 
 /**
  * Department management.

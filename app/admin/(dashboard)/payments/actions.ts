@@ -18,9 +18,8 @@ import {
 import { clientIdentifier } from "@/lib/rate-limit/limiter";
 import { cuidSchema, manualAdjustmentSchema } from "@/lib/validation/schemas";
 
-export type ActionState = { error: string | null; success: string | null };
+import type { ActionState } from "../action-state";
 
-export const IDLE_STATE: ActionState = { error: null, success: null };
 
 /**
  * Administrative actions on a payment.

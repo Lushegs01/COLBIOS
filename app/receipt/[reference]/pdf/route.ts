@@ -25,7 +25,7 @@ export const dynamic = "force-dynamic";
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ reference: string }> },
+  context: RouteContext<"/receipt/[reference]/pdf">,
 ) {
   try {
     const limit = await checkRateLimit(RATE_LIMITS.publicLookup, clientIdentifier(request.headers));
@@ -33,7 +33,7 @@ export async function GET(
       throw new AppError("RATE_LIMITED", "Too many requests. Please try again shortly.");
     }
 
-    const { reference: raw } = await params;
+    const { reference: raw } = await context.params;
     const parsed = referenceSchema.safeParse(decodeURIComponent(raw));
     if (!parsed.success) throw new AppError("INVALID_REFERENCE");
 

@@ -32,11 +32,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
  * It is rate limited, and an unknown reference produces the same 404 as a
  * malformed one, so the endpoint cannot be walked to discover valid references.
  */
-export default async function VerifyPage({
-  params,
-}: {
-  params: Promise<{ reference: string }>;
-}) {
+export default async function VerifyPage(props: PageProps<"/verify/[reference]">) {
   const limit = await checkRateLimit(RATE_LIMITS.publicLookup, clientIdentifier(await headers()));
   if (!limit.allowed) {
     return (
@@ -51,7 +47,7 @@ export default async function VerifyPage({
     );
   }
 
-  const { reference: raw } = await params;
+  const { reference: raw } = await props.params;
   const parsed = referenceSchema.safeParse(decodeURIComponent(raw));
   if (!parsed.success) notFound();
 

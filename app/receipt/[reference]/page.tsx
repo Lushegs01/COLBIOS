@@ -30,12 +30,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
  * any other status the page says plainly that no receipt exists rather than
  * rendering something that looks like proof of payment.
  */
-export default async function ReceiptPage({
-  params,
-}: {
-  params: Promise<{ reference: string }>;
-}) {
-  const { reference: raw } = await params;
+export default async function ReceiptPage(props: PageProps<"/receipt/[reference]">) {
+  const { reference: raw } = await props.params;
   const parsed = referenceSchema.safeParse(decodeURIComponent(raw));
   if (!parsed.success) notFound();
 

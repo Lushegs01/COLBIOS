@@ -21,6 +21,14 @@ export const metadata: Metadata = {
  * this page does is take the reference and run the *server-side* verification,
  * then send the student to the page that matches the real, provider-confirmed
  * outcome. Nothing here can mark a payment successful on its own.
+ *
+ * Next's data-security guide advises against mutations as a render side effect,
+ * and this page does mutate: it settles the payment. That is a deliberate
+ * exception, and it is safe because fulfilment is idempotent — it locks the
+ * payment row, re-checks the status, and issues at most one receipt — so a
+ * repeated render cannot double-fulfil. The alternative, an auto-submitting
+ * form, would make confirmation depend on JavaScript, which is exactly what
+ * this flow avoids for students on slow connections and low-end phones.
  */
 export default async function CallbackPage({
   searchParams,

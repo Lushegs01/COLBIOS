@@ -208,7 +208,7 @@ export default function Hero({ sessionName, amountLabel }: HeroProps) {
             }}
             className="relative z-10 flex justify-center"
           >
-            <PhoneMockup sessionName={sessionName} amountLabel={amountLabel} />
+            <PhoneMockup />
           </motion.div>
 
           {/* Card 1 — Payment methods */}

@@ -13,13 +13,17 @@ import type { PaymentStatusValue } from "@/lib/payments/state";
 
 export function PayShell({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-dvh flex-col bg-background">
+    <div className="flex min-h-dvh flex-col bg-pay-gradient">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink focus:shadow-lift"
       >
         Skip to content
       </a>
+
+      {/* Decorative branded stripe at the very top */}
+      <div className="pay-stripe h-1" aria-hidden="true" />
+
       <PayHeader />
       <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
         {children}
@@ -31,12 +35,12 @@ export function PayShell({ children }: { children: ReactNode }) {
 
 export function PayHeader() {
   return (
-    <header className="border-b border-line bg-white">
+    <header className="border-b border-line/60 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="COLBIOS home">
+        <Link href="/" className="flex items-center gap-3" aria-label="COLBIOS home">
           <span
             aria-hidden="true"
-            className="grid h-9 w-9 place-items-center rounded-lg bg-pine-700 text-[13px] font-bold text-white"
+            className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-pine-600 to-pine-800 text-[13px] font-bold text-white shadow-sm"
           >
             CB
           </span>
@@ -47,6 +51,24 @@ export function PayHeader() {
             <span className="block text-[11px] text-muted">College of Biosciences, FUNAAB</span>
           </span>
         </Link>
+
+        {/* Trust signal in header */}
+        <span className="hidden items-center gap-1.5 text-[11px] font-medium text-pine-700 sm:flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-3.5 w-3.5"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Secure payment
+        </span>
       </div>
     </header>
   );
@@ -54,12 +76,30 @@ export function PayHeader() {
 
 export function PayFooter() {
   return (
-    <footer className="border-t border-line bg-white">
-      <div className="mx-auto w-full max-w-2xl px-4 py-6 text-[12px] leading-relaxed text-muted sm:px-6">
-        <p>
+    <footer className="border-t border-line/60 bg-white/60 backdrop-blur-sm">
+      <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:px-6">
+        {/* Secured by Paystack badge */}
+        <div className="mb-3 flex items-center gap-2 text-[12px] font-medium text-pine-700">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-4 w-4"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.661 2.237a.531.531 0 01.678 0 11.947 11.947 0 007.078 2.749.5.5 0 01.479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 01-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 01.48-.425 11.947 11.947 0 007.077-2.75z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Secured by Paystack
+        </div>
+
+        <p className="text-[12px] leading-relaxed text-muted">
           Payments are processed by Paystack. COLBIOS never sees or stores your card details.
         </p>
-        <p className="mt-1.5">
+        <p className="mt-1.5 text-[12px] leading-relaxed text-muted">
           College of Biosciences, Federal University of Agriculture, Abeokuta.
         </p>
       </div>
@@ -77,7 +117,9 @@ export function Card({
   as?: "section" | "div" | "article";
 }) {
   return (
-    <Tag className={`rounded-2xl border border-line bg-white p-5 shadow-soft sm:p-7 ${className}`}>
+    <Tag
+      className={`animate-fade-in-up-delay rounded-2xl border border-line/80 bg-white p-5 shadow-elevated sm:p-7 ${className}`}
+    >
       {children}
     </Tag>
   );
@@ -93,9 +135,10 @@ export function PageTitle({
   description?: string;
 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-6 animate-fade-in-up">
       {eyebrow ? (
-        <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-pine-700">
+        <p className="mb-2.5 inline-flex items-center gap-1.5 rounded-full bg-pine-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-pine-700 ring-1 ring-pine-200/60">
+          <span className="h-1.5 w-1.5 rounded-full bg-pine-500" aria-hidden="true" />
           {eyebrow}
         </p>
       ) : null}

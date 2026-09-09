@@ -44,6 +44,24 @@ const config: Config = {
         lift: "0 2px 4px rgba(17, 24, 39, 0.04), 0 24px 56px -20px rgba(17, 24, 39, 0.18)",
         device:
           "0 1px 2px rgba(17, 24, 39, 0.08), 0 40px 90px -28px rgba(17, 24, 39, 0.34)",
+        elevated:
+          "0 0 0 1px rgba(17, 24, 39, 0.03), 0 4px 8px -2px rgba(17, 24, 39, 0.06), 0 20px 48px -12px rgba(17, 24, 39, 0.12)",
+        glow: "0 0 0 1px rgba(11, 93, 74, 0.08), 0 4px 16px -4px rgba(11, 93, 74, 0.14), 0 24px 48px -12px rgba(11, 93, 74, 0.08)",
+      },
+      animation: {
+        "fade-in-up": "fadeInUp 0.5s ease-out both",
+        "fade-in-up-delay": "fadeInUp 0.5s ease-out 0.1s both",
+        "pulse-glow": "pulseGlow 2s ease-in-out infinite",
+      },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(11, 93, 74, 0)" },
+          "50%": { boxShadow: "0 0 0 4px rgba(11, 93, 74, 0.1)" },
+        },
       },
     },
   },

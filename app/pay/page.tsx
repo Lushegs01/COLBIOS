@@ -76,9 +76,9 @@ export default async function PayPage() {
         />
       </Card>
 
-      <p className="mt-5 text-center text-[12.5px] leading-relaxed text-muted">
+      <p className="mt-6 text-center text-[12.5px] leading-relaxed text-muted">
         Already paid?{" "}
-        <span className="text-ink">
+        <span className="font-medium text-pine-700">
           Open the receipt link from your confirmation email to view or verify it.
         </span>
       </p>

@@ -51,4 +51,32 @@
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
   }
+
+  /* Premium gradient background for the pay shell */
+  .bg-pay-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(11, 93, 74, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(11, 93, 74, 0.03) 0%, transparent 50%),
+      #FAFAF8;
+  }
+
+  /* Decorative top stripe */
+  .pay-stripe {
+    background: linear-gradient(135deg, #084234 0%, #0B5D4A 40%, #0F6B51 70%, #2F8567 100%);
+  }
+
+  /* Premium input focus ring transition */
+  .input-premium {
+    @apply transition-all duration-200 ease-out;
+  }
+  .input-premium:focus {
+    @apply border-pine-500 ring-[3px] ring-pine-600/10 shadow-none;
+  }
+
+  /* Glass morphism card effect */
+  .card-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
 }

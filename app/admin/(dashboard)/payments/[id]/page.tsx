@@ -20,12 +20,10 @@ const dateFormatter = new Intl.DateTimeFormat("en-NG", {
   timeZone: "Africa/Lagos",
 });
 
-export default async function AdminPaymentDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+export default async function AdminPaymentDetailPage(
+  props: PageProps<"/admin/payments/[id]">,
+) {
+  const { id } = await props.params;
   const admin = await requireAdminPage("payments:read", `/admin/payments/${id}`);
 
   const parsedId = cuidSchema.safeParse(id);

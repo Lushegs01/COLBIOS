@@ -160,6 +160,29 @@ only change needed is reporting.
 
 ---
 
+## Dependency security
+
+`npm audit` should report **zero** vulnerabilities. If it does not, treat it as
+a release blocker and investigate before deploying — this application handles
+money.
+
+Two transitive packages are currently pinned forward in `overrides` in
+`package.json`:
+
+| Package | Why it is here | Why it is pinned |
+| --- | --- | --- |
+| `mysql2` | `@prisma/client` depends on the `prisma` CLI, which bundles drivers for every database Prisma supports | Advisories on credential leakage and a decompression-bomb DoS. This app uses PostgreSQL and never loads `mysql2`, but leaving a flagged package in the production tree hides real findings behind noise. |
+| `deepmerge-ts` | Used by `@prisma/config` when loading `prisma.config.ts` | Stack exhaustion on recursive object graphs. |
+
+Neither package is imported by application code, so the pins are about keeping
+the audit signal clean rather than closing a reachable hole. Remove them once
+Prisma ships versions that depend on the patched releases directly — after
+removing, run `npm install`, then `npx prisma generate`, `npx prisma migrate
+deploy` and the test suite, because both packages sit in Prisma's own
+machinery.
+
+---
+
 ## Rolling back
 
 Roll back the deployment in Vercel. Do **not** roll back a migration on a

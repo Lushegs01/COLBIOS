@@ -192,23 +192,37 @@ export function BreakdownBars({
 
   return (
     <ul className="space-y-3">
-      {rows.map((row) => (
-        <li key={row.key}>
-          <div className="flex items-baseline justify-between gap-3">
-            <span className="text-[13.5px] font-medium text-ink">{row.label}</span>
-            <span className="text-[13px] tabular-nums text-muted">
-              <span className="font-semibold text-ink">{formatMoney(row.amountMinor, currency)}</span>{" "}
-              · {row.count} {row.count === 1 ? "payment" : "payments"}
-            </span>
-          </div>
-          <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-pine-50">
-            <div
-              className="h-full rounded-full bg-pine-600"
-              style={{ width: `${Math.max(2, (row.amountMinor / max) * 100)}%` }}
-            />
-          </div>
-        </li>
-      ))}
+      {rows.map((row) => {
+        const percent = Math.max(2, (row.amountMinor / max) * 100);
+        return (
+          <li key={row.key}>
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="text-[13.5px] font-medium text-ink">{row.label}</span>
+              <span className="text-[13px] tabular-nums text-muted">
+                <span className="font-semibold text-ink">
+                  {formatMoney(row.amountMinor, currency)}
+                </span>{" "}
+                · {row.count} {row.count === 1 ? "payment" : "payments"}
+              </span>
+            </div>
+            {/*
+              Drawn as SVG rather than a div with an inline width. An inline
+              `style` attribute would force `style-src 'unsafe-inline'` into the
+              Content-Security-Policy for the whole admin area; a proportional
+              rect needs no such exception.
+            */}
+            <svg
+              viewBox="0 0 100 3"
+              preserveAspectRatio="none"
+              className="mt-1.5 h-2 w-full"
+              role="presentation"
+            >
+              <rect x="0" y="0" width="100" height="3" rx="1.5" fill="#F1F7F4" />
+              <rect x="0" y="0" width={percent} height="3" rx="1.5" fill="#0F6B51" />
+            </svg>
+          </li>
+        );
+      })}
     </ul>
   );
 }
